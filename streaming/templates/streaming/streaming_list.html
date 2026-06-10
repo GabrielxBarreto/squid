@@ -1,0 +1,26 @@
+<h1>Serviços de Streaming</h1>
+<a href="{% url 'streaming:criar' %}">+ Novo Streaming</a>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Preço Total</th>
+    <th>Máx. Membros</th>
+    <th>Preço por Membro</th>
+    <th>Ações</th>
+  </tr>
+  {% for s in streamings %}
+  <tr>
+    <td>{{ s.nome }}</td>
+    <td>R$ {{ s.preco_total }}</td>
+    <td>{{ s.max_membros }}</td>
+    <td>R$ {{ s.preco_por_membro }}</td>
+    <td>
+      <a href="{% url 'streaming:editar' s.pk %}">Editar</a>
+      <a href="{% url 'streaming:deletar' s.pk %}">Deletar</a>
+    </td>
+  </tr>
+  {% empty %}
+  <tr><td colspan="5">Nenhum streaming cadastrado.</td></tr>
+  {% endfor %}
+</table>

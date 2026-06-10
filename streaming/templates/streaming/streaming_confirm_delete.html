@@ -1,0 +1,7 @@
+<h1>Confirmar exclusão</h1>
+<p>Deseja deletar "{{ object.nome }}"?</p>
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Sim, deletar</button>
+</form>
+<a href="{% url 'streaming:lista' %}">Cancelar</a>
