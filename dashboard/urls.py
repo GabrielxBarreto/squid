@@ -11,9 +11,12 @@ urlpatterns = [
     # Área Logada
     path('dashboard/', views.dashboard, name='dashboard'),
     path('criarGrupo/', views.criarGrupo, name='criarGrupo'),
+    # No seu urls.py, adicione essa linha junto com as outras:
+    path('grupo/entrar/<int:grupo_id>/', views.entrar_grupo, name='entrar_grupo'),
 
     # APIs e Testes
     path('api/users/', views.listUsers, name='api_users'),
     path('api/users/updateUser/<int:id>/', views.updateUser, name='updateUser'),
     path('api/users/deleteUser/<int:id>/', views.deleteUser, name='deleteUser'),
+    
 ]

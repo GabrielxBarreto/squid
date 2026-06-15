@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-pjg6lbo!ygiel=o3d%57@s+-yswgiao)=bqc1m^qqwzy#lg=rw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sistema-gerenciador-de-streamings-1.onrender.com']
+ALLOWED_HOSTS = ['sistema-gerenciador-de-streamings-1.onrender.com','127.0.0.1']
 
 
 # Application definition

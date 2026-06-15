@@ -78,11 +78,13 @@ def dashboard(request):
         economia_total += (valor_plano - meu_gasto_real)
         
         proximos_vencimentos.append({
+            'id': grupo.id,
             'nome': grupo.streaming.name,
             'dia': grupo.dia_vencimento,
             'valor_total': valor_plano,
             'cobranca_automatica': grupo.cobranca_automatica,
-            'pendentes_count': grupo.membros.filter(membrogrupo__status_pagamento=False).count()
+            'pendentes_count': grupo.membros.filter(membrogrupo__status_pagamento=False).count(),
+            'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/")
         })
         
         # Buscar amigos que estão a dever neste grupo
@@ -116,6 +118,26 @@ def criarGrupo(request):
         )
         grupo.save()
     return redirect("dashboard")
+
+@login_required(login_url='/login/')
+def entrar_grupo(request, grupo_id):
+    grupo = get_object_or_404(models.Grupo, id=grupo_id)
+    
+    # 1. Se o dono clicar no próprio link, não faz sentido ele entrar como membro
+    if grupo.owner == request.user:
+        messages.warning(request, "Você é o dono deste grupo!")
+        return redirect('dashboard')
+        
+    # 2. Verificar se o usuário já está no grupo para não duplicar
+    if grupo.membros.filter(id=request.user.id).exists():
+        messages.info(request, "Você já faz parte deste grupo!")
+        return redirect('dashboard')
+        
+    # 3. Adiciona o participante usando a tabela intermediária que você criou
+    models.MembroGrupo.objects.create(grupo=grupo, participante=request.user)
+    messages.success(request, f"Boa! Você entrou no grupo {grupo.name}.")
+    
+    return redirect('dashboard')
 
 # ==================== API / CRUD RÁPIDO ====================
 
