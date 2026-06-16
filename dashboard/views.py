@@ -68,7 +68,25 @@ def carregar_planos(request):
 def dashboard(request):
     usuario = request.user
     meus_grupos = models.Grupo.objects.filter(owner=usuario)
-    
+    vincos_participante = models.MembroGrupo.objects.filter(participante=usuario)
+    grupos_participando = []
+
+    for vinculo in vincos_participante:
+        grupo_alheio = vinculo.grupo
+        membros_desse_grupo = models.MembroGrupo.objects.filter(grupo=grupo_alheio)
+        total_pessoas = membros_desse_grupo.count() + 1 # Membros + Dono
+        
+        valor_plano = grupo_alheio.plano.preco_mensal
+        minha_parte = valor_plano / total_pessoas
+        
+        grupos_participando.append({
+            'nome_streaming': grupo_alheio.streaming.name,
+            'dono': grupo_alheio.owner.username,
+            'dia_vencimento': grupo_alheio.dia_vencimento,
+            'minha_parte': f"{minha_parte:.2f}".replace('.', ','),
+            'status_pagamento': vinculo.status_pagamento
+        })
+
     # Cálculos Financeiros
     gasto_total = 0
     economia_total = 0
@@ -77,6 +95,9 @@ def dashboard(request):
 
     for grupo in meus_grupos:
         valor_plano = grupo.plano.preco_mensal
+
+        membros_grupo = models.MembroGrupo.objects.filter(grupo=grupo)
+
         total_pessoas = grupo.membros.count() + 1 # Membros + Dono
         
         # Quanto o dono realmente paga
@@ -86,7 +107,7 @@ def dashboard(request):
         # Quanto o dono economiza por dividir
         economia_total += (valor_plano - meu_gasto_real)
         
-        membros_grupo = models.MembroGrupo.objects.filter(grupo=grupo)
+        
 
         proximos_vencimentos.append({
             'id': grupo.id,
@@ -114,6 +135,7 @@ def dashboard(request):
         'economia_total': f"{economia_total:.2f}".replace('.', ','),
         'vencimentos': proximos_vencimentos,
         'pendentes': amigos_pendentes,
+        'grupos_participando' : grupos_participando,
         'streamings': models.Streaming.objects.all(),
         'planos': models.Plano.objects.all(),
     }
@@ -142,7 +164,7 @@ def entrar_grupo(request, grupo_id):
         return redirect('dashboard')
         
     # 2. Verificar se o usuário já está no grupo para não duplicar
-    if grupo.membros.filter(id=request.user.id).exists():
+    if models.MembroGrupo.objects.filter(grupo=grupo, participante=request.user).exists():
         messages.info(request, "Você já faz parte deste grupo!")
         return redirect('dashboard')
         
@@ -151,6 +173,24 @@ def entrar_grupo(request, grupo_id):
     messages.success(request, f"Boa! Você entrou no grupo {grupo.name}.")
     
     return redirect('dashboard')
+
+@login_required(login_url='/login/')
+def detalhe_membro(request, membro_id):
+    # Pega o registro do membro associado ao grupo
+    membro_grupo = get_object_or_404(models.MembroGrupo, id=membro_id)
+    grupo = membro_grupo.grupo
+    
+    # Segurança: Apenas o dono do grupo pode ver esse perfil individual
+    if grupo.owner != request.user:
+        messages.error(request, "Você não tem permissão para visualizar este perfil.")
+        return redirect('dashboard')
+        
+    context = {
+        'membro': membro_grupo.participante,
+        'vinculo': membro_grupo,
+        'grupo': grupo
+    }
+    return render(request, 'perfil_membro.html', context)
 
 # ==================== API / CRUD RÁPIDO ====================
 

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>SubSplit - Perfil de {{ membro.username }}</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 40px;
+        }
+        .container-perfil {
+            background-color: #121212;
+            border: 1px solid #7c3aed; /* Roxo elétrico */
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .avatar-placeholder {
+            width: 80px;
+            height: 80px;
+            background-color: #7c3aed;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .info-grupo {
+            color: #a78bfa;
+            margin-bottom: 20px;
+        }
+        .btn-voltar {
+            display: inline-block;
+            background-color: transparent;
+            color: #7c3aed;
+            border: 1px solid #7c3aed;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: 0.3s;
+        }
+        .btn-voltar:hover {
+            background-color: #7c3aed;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-perfil">
+        <div class="avatar-placeholder">
+            {{ membro.username|slice:":1"|upper }}
+        </div>
+        
+        <h1>Perfil de {{ membro.username }}</h1>
+        <p><strong>E-mail:</strong> {{ membro.email }}</p>
+        
+        <div class="info-grupo">
+            <h3>Informações no Grupo: {{ grupo.streaming.name }}</h3>
+            <p><strong>Status do Pagamento Atual:</strong> 
+                {% if vinculo.status_pagamento %}
+                    <span style="color: #10b981;">Pago 🟢</span>
+                {% else %}
+                    <span style="color: #ef4444;">Pendente 🔴</span>
+                {% endif %}
+            </p>
+            <p><strong>Valor Devido:</strong> R$ {{ vinculo.valor_devido }}</p>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="btn-voltar">← Voltar para Dashboard</a>
+    </div>
+
+</body>
+</html>

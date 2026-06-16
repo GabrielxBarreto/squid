@@ -254,7 +254,10 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
 
             <span>
-                {{ membro.participante.username }} 🔥 {{ membro.streak }}
+                <a href="{% url 'detalhe_membro' membro.id %}" style="color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+                    {{ membro.participante.username }}
+                    </a> 
+                <span style="color: var(--text-muted); font-size: 13px; margin-left: 4px;">🔥 {{ membro.streak }}</span>
             </span>
 
             {% if not membro.status_pagamento %}
@@ -272,6 +275,30 @@
             {% empty %}
             <p style="color: var(--text-muted); text-align: center; margin-top: 20px;">Nenhum grupo criado ainda.</p>
             {% endfor %}
+            <h3 class="section-title" style="margin-top: 40px;">Assinaturas que eu Participo</h3>
+            
+            {% for g in grupos_participando %}
+            <div class="item-card" style="border-left: 3px solid var(--accent);">
+                <div class="item-row">
+                    <div class="item-info">
+                        <div class="item-icon">📺</div>
+                        <div>
+                            <h4 style="font-size: 16px;">{{ g.nome_streaming }}</h4>
+                            <p style="font-size: 13px; color: var(--text-muted);">Dono: {{ g.dono }} | Vence Dia {{ g.dia_vencimento }}</p>
+                        </div>
+                    </div>
+                    <div style="text-align: right;">
+                        <h4>R$ {{ g.minha_parte }}</h4>
+                        <p style="font-size: 12px; color: {% if g.status_pagamento %}var(--success){% else %}var(--danger){% endif %};">
+                            {% if g.status_pagamento %}Sua parte está paga ✅{% else %}Aguardando pagamento ⏳{% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p style="color: var(--text-muted); text-align: center; margin-top: 20px; font-size: 14px;">Você não participa de nenhuma assinatura de amigos ainda.</p>
+            {% endfor %}
+            </div> </div> ```
         </div>
     </div>
 
