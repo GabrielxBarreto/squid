@@ -66,9 +66,9 @@
 .streak-badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     margin-left: 10px;
-    padding: 6px 12px;
+    padding: 4px 12px;
     border-radius: 999px;
     background: linear-gradient(135deg, #ff3d00, #ff9800, #ffd600);
     color: #111;
@@ -79,8 +79,39 @@
 }
 
 .streak-fire {
-    font-size: 26px;
+    font-size: 16px;
     animation: fireShake 0.8s infinite alternate;
+}
+.streak-0 {
+    background: #444;
+    box-shadow: none;
+}
+
+.streak-1 {
+    background: #ffb74d;
+    box-shadow: 0 0 4px rgba(255, 140, 0, 0.4);
+}
+
+.streak-2 {
+    background: #ffa726;
+    box-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
+}
+
+.streak-3 {
+    background: #ff9800;
+    box-shadow: 0 0 14px rgba(255, 140, 0, 0.8);
+}
+
+.streak-4 {
+    background: #ff9800;
+    box-shadow: 0 0 22px rgba(255, 170, 0, 1);
+}
+
+.streak-5 {
+    background: #ff9800;
+    box-shadow:
+        0 0 15px rgba(255, 170, 0, 1),
+        0 0 30px rgba(255, 200, 0, 1);
 }
 
 @keyframes firePulse {
@@ -89,7 +120,7 @@
         box-shadow: 0 0 12px rgba(255, 115, 0, 0.6);
     }
     to {
-        transform: scale(1.08);
+        transform: scale(1.05);
         box-shadow: 0 0 28px rgba(255, 180, 0, 1);
     }
 }
@@ -199,7 +230,7 @@
                             <h4 style="font-size: 16px;">
                               {{ v.nome }}
 
-                             <span class="streak-badge">
+                             <span class="streak-badge streak-{% if v.streak_pagamentos > 5 %}5{% else %}{{ v.streak_pagamentos }}{% endif %}">
                               <span class="streak-fire">🔥</span>
                                   {{ v.streak_pagamentos }}
                               </span>
