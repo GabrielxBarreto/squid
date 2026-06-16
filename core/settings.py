@@ -72,7 +72,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
-
+# Configurações de E-mail (Exemplo com Gmail)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'corpaligator@gmail.com'
+EMAIL_HOST_PASSWORD = 'wzgt lbjk rlbp fwbc' # Use variáveis de ambiente (python-dotenv)
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 

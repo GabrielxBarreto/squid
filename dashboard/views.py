@@ -3,6 +3,9 @@ from django.contrib.auth import authenticate, login as django_login, logout as d
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import JsonResponse
+from django.core.mail import send_mail
+from django.conf import settings
+from django.http import HttpResponse
 from dashboard import models
 
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
@@ -146,6 +149,21 @@ def entrar_grupo(request, grupo_id):
     return redirect('dashboard')
 
 # ==================== API / CRUD RÁPIDO ====================
+
+def cobrar_amigo(request,email):
+    if request.method == 'GET':
+        try:
+            send_mail(
+                subject='Lembrete de Assinatura - SubSplit',
+                message='Sua parte da assinatura vence amanhã. Valor: R$ 15,90.',
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+            return HttpResponse("Cobrança enviada!")
+        except Exception as e:
+            return HttpResponse(f"Erro: {e}")
+
 
 def listUsers(request):
     users = list(models.Participante.objects.values('id', 'username', 'email'))
