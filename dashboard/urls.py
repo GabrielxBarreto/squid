@@ -17,7 +17,9 @@ urlpatterns = [
     path('ajax/carregar-planos/', views.carregar_planos, name='ajax_carregar_planos'),
     # No seu urls.py, adicione essa linha junto com as outras:
     path('grupo/entrar/<int:grupo_id>/', views.entrar_grupo, name='entrar_grupo'),
-
+    
+    path('pagamento/<int:membro_id>/', views.marcar_pagamento, name='marcar_pagamento'
+),
     # APIs e Testes
     path('api/users/', views.listUsers, name='api_users'),
     path('api/users/updateUser/<int:id>/', views.updateUser, name='updateUser'),

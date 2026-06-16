@@ -45,7 +45,8 @@ class Grupo(models.Model):
     streaming = models.ForeignKey(Streaming, on_delete=models.CASCADE)
     dia_vencimento = models.IntegerField(default=15) # Novo: Dia do mês que a conta vence
     cobranca_automatica = models.BooleanField(default=True) # Novo: Toggle do app
-    
+    streak_pagamentos = models.PositiveIntegerField(default=0)
+    assinatura_paga = models.BooleanField(default=False)
     # Novo: Relação de quem faz parte do grupo para dividir a conta
     membros = models.ManyToManyField(Participante, through='MembroGrupo', related_name="grupos_participo")
 
@@ -57,7 +58,7 @@ class MembroGrupo(models.Model):
     grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
     participante = models.ForeignKey(Participante, on_delete=models.CASCADE)
     status_pagamento = models.BooleanField(default=False) # False = Pendente/Devendo, True = Pago
-    
+    streak = models.PositiveIntegerField(default=0)
     @property
     def valor_devido(self):
         # Divide o valor total pelo número de membros + o dono

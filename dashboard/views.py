@@ -86,15 +86,19 @@ def dashboard(request):
         # Quanto o dono economiza por dividir
         economia_total += (valor_plano - meu_gasto_real)
         
+        membros_grupo = models.MembroGrupo.objects.filter(grupo=grupo)
+
         proximos_vencimentos.append({
             'id': grupo.id,
             'nome': grupo.streaming.name,
             'dia': grupo.dia_vencimento,
             'valor_total': valor_plano,
             'cobranca_automatica': grupo.cobranca_automatica,
-            'pendentes_count': grupo.membros.filter(membrogrupo__status_pagamento=False).count(),
-            'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/")
-        })
+            'pendentes_count': membros_grupo.filter(status_pagamento=False).count(),
+            'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/"),
+            'membros': membros_grupo,
+            'streak_pagamentos': grupo.streak_pagamentos,
+})
         
         # Buscar amigos que estão a dever neste grupo
         devedores = models.MembroGrupo.objects.filter(grupo=grupo, status_pagamento=False)
@@ -181,3 +185,25 @@ def deleteUser(request, id):
     user = get_object_or_404(models.Participante, id=id) 
     user.delete()
     return redirect("index")
+
+@login_required(login_url='/login/')
+def marcar_pagamento(request, membro_id):
+    membro = get_object_or_404(models.MembroGrupo, id=membro_id)
+
+    if not membro.status_pagamento:
+        membro.status_pagamento = True
+        membro.save()
+
+    grupo = membro.grupo
+
+    todos_pagaram = not models.MembroGrupo.objects.filter(
+        grupo=grupo,
+        status_pagamento=False
+    ).exists()
+
+    if todos_pagaram and not grupo.assinatura_paga:
+        grupo.assinatura_paga = True
+        grupo.streak_pagamentos += 1
+        grupo.save()
+
+    return redirect('dashboard')
