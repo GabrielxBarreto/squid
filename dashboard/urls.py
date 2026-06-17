@@ -18,8 +18,9 @@ urlpatterns = [
     # No seu urls.py, adicione essa linha junto com as outras:
     path('grupo/entrar/<int:grupo_id>/', views.entrar_grupo, name='entrar_grupo'),
     
-    path('pagamento/<int:membro_id>/', views.marcar_pagamento, name='marcar_pagamento'
-),
+    path('pagamento/<int:membro_id>/', views.marcar_pagamento, name='marcar_pagamento' ),     
+    path('desfazer-pagamento/<int:membro_id>/', views.desfazer_pagamento, name='desfazer_pagamento'),
+    
     path('membro/<int:membro_id>/', views.detalhe_membro, name='detalhe_membro'),
     path('membro/<int:membro_id>/remover/', views.remover_membro, name='remover_membro'),
     # APIs e Testes

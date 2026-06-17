@@ -253,6 +253,23 @@ def marcar_pagamento(request, membro_id):
     return redirect('dashboard')
 
 @login_required(login_url='/login/')
+def desfazer_pagamento(request, membro_id):
+    membro = get_object_or_404(models.MembroGrupo, id=membro_id)
+    grupo = membro.grupo
+
+    if membro.status_pagamento:
+        membro.status_pagamento = False
+        membro.save()
+
+        grupo.assinatura_paga = False
+        
+        if grupo.streak_pagamentos > 0:
+            grupo.streak_pagamentos -= 1
+            
+        grupo.save()
+    return redirect('dashboard')
+
+@login_required(login_url='/login/')
 def remover_membro(request, membro_id):
     membro_grupo = get_object_or_404(models.MembroGrupo, id=membro_id)
 

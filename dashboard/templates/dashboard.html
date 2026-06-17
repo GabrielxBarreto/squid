@@ -76,62 +76,53 @@
     font-size: 18px;
     font-weight: 800;
     box-shadow: 0 0 18px rgba(255, 115, 0, 0.8);
-    animation: firePulse 1.2s infinite alternate;
+    animation: none;
 }
 
 .streak-fire {
     font-size: 16px;
-    animation: fireShake 0.8s infinite alternate;
+    display: inline-block;
+    animation: none;
 }
+
 .streak-0 {
-    background: #444;
+    background:#3a3a3a;
+    color: #d0d0d0;
     box-shadow: none;
 }
 
-.streak-1 {
-    background: #ffb74d;
-    box-shadow: 0 0 4px rgba(255, 140, 0, 0.4);
+
+.streak-0 .streak-fire {
+    filter: grayscale(1);
+    animation: none;
 }
 
-.streak-2 {
-    background: #ffa726;
-    box-shadow: 0 0 8px rgba(255, 140, 0, 0.6);
-}
-
-.streak-3 {
-    background: #ff9800;
-    box-shadow: 0 0 14px rgba(255, 140, 0, 0.8);
-}
-
-.streak-4 {
-    background: #ff9800;
-    box-shadow: 0 0 22px rgba(255, 170, 0, 1);
-}
-
+/* streak 1 até 5 */
+.streak-1,
+.streak-2,
+.streak-3,
+.streak-4,
 .streak-5 {
-    background: #ff9800;
-    box-shadow:
-        0 0 15px rgba(255, 170, 0, 1),
-        0 0 30px rgba(255, 200, 0, 1);
+    background: #ffb74d;
+    box-shadow: 0 0 4px rgba(255, 140, 0, 0.35); 
 }
 
-@keyframes firePulse {
+/* fogo pulsando bem pouco */
+.streak-1 .streak-fire,
+.streak-2 .streak-fire,
+.streak-3 .streak-fire,
+.streak-4 .streak-fire,
+.streak-5 .streak-fire {
+    animation: firePulseTiny 0.8s infinite alternate;
+}
+
+@keyframes firePulseTiny {
     from {
         transform: scale(1);
-        box-shadow: 0 0 12px rgba(255, 115, 0, 0.6);
     }
-    to {
-        transform: scale(1.05);
-        box-shadow: 0 0 28px rgba(255, 180, 0, 1);
-    }
-}
 
-@keyframes fireShake {
-    from {
-        transform: rotate(-6deg) scale(1);
-    }
     to {
-        transform: rotate(6deg) scale(1.15);
+        transform: scale(1.3);
     }
 }
         /* ==================== ADAPTAÇÃO PARA COMPUTADOR (DESKTOP) ==================== */
@@ -249,7 +240,7 @@
                             <h4 style="font-size: 16px;">
                               {{ v.nome }}
 
-                             <span class="streak-badge streak-{% if v.streak_pagamentos > 5 %}5{% else %}{{ v.streak_pagamentos }}{% endif %}">
+                             <span class="">
                               <span class="streak-fire">🔥</span>
                                   {{ v.streak_pagamentos }}
                               </span>
@@ -276,7 +267,7 @@
                 <a href="{% url 'detalhe_membro' membro.id %}" style="color: var(--accent); text-decoration: none; font-weight: 500; transition: opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
                     {{ membro.participante.username }}
                     </a> 
-                <span style="color: var(--text-muted); font-size: 13px; margin-left: 4px;">🔥 {{ membro.streak }}</span>
+            
             </span>
 
             {% if not membro.status_pagamento %}
@@ -284,7 +275,12 @@
                     Pagar
                 </a>
             {% else %}
-                <span>Pago ✅</span>
+                <span style="color: var(--success);">Pago ✅</span>
+                  
+                <a href="{% url 'desfazer_pagamento' membro.id %}"
+                     style="color: var(--danger); text-decoration: none; margin-left: 8px;">
+                   ↩️
+                  </a>
             {% endif %}
 
             <a href="{% url 'remover_membro' membro.id %}" 
