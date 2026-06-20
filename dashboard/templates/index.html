@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #050505; 
+            background-color: #09090b; 
             color: #FFFFFF;
             min-height: 100vh;
             display: flex;
@@ -61,20 +61,21 @@
         }
 
         .btn-cta-nav {
-            background: #1A1A1A;
+            background: rgba(255, 255, 255, 0.03);
             color: #FFFFFF;
-            border: 1px solid #333;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 10px 20px;
             border-radius: 12px;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
         }
 
         .btn-cta-nav:hover {
-            background: #222222;
-            border-color: #9B51E0;
+            background: rgba(168, 85, 247, 0.1);
+            border-color: #A855F7;
+            transform: translateY(-1px);
         }
 
         /* Seção Principal (Hero) */
@@ -112,7 +113,7 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #A855F7, #8B5CF6);
+            background: linear-gradient(135deg, #A855F7, #7C3AED);
             color: #FFFFFF;
             text-decoration: none;
             border-radius: 16px;
@@ -120,12 +121,15 @@
             font-size: 16px;
             font-weight: 600;
             display: inline-block;
-            transition: opacity 0.2s;
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.2);
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
         }
 
         .btn-primary:hover {
-            opacity: 0.9;
+            opacity: 1;
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.3);
         }
 
         /* Grid de Funcionalidades (Simulando o App) */
@@ -136,18 +140,20 @@
         }
 
         .feature-card {
-            background-color: #1A1A1A;
-            border: 1px solid #262626;
+            background-color: #141417;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 16px;
             padding: 24px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-            transition: transform 0.2s;
+            transition: all 0.2s ease-in-out;
         }
 
         .feature-card:hover {
             transform: translateY(-4px);
+            border-color: rgba(168, 85, 247, 0.3);
+            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.04);
         }
 
         .feature-card .icon {
@@ -222,29 +228,32 @@
         </div>
 
         <div class="hero-visual">
-            <div class="feature-card">
-                <div class="icon">📊</div>
-                <h3>Controle Total</h3>
-                <p>Visualize todos os seus gastos mensais com serviços de streaming em um único painel dinâmico.</p>
-            </div>
             
-            <div class="feature-card">
+                    <div class="feature-card">
                 <div class="icon">👥</div>
-                <h3>Grupos de Divisão</h3>
-                <p>Divida o valor do plano premium com seus amigos. Cada um paga a sua parte direto pelo app.</p>
-            </div>
-
+                <h3>Grupos Compartilhados</h3>
+                <p>Monte salas com seus amigos para dividir Netflix, Spotify, Disney+ e muito mais de forma justa.</p>
+                </div>
             <div class="feature-card">
-                <div class="icon">🔔</div>
-                <h3>Alertas Inteligentes</h3>
-                <p>Esqueça as surpresas na fatura. Receba avisos antes que a renovação automática aconteça.</p>
+                <div class="icon">💰</div>
+                <h3>Divisão Automática</h3>
+                <p>O sistema calcula em tempo real o valor exato da cota individual de cada participante cadastrado.</p>
             </div>
-
             <div class="feature-card">
                 <div class="icon">🔒</div>
-                <h3>100% Seguro</h3>
-                <p>Dados criptografados para garantir que a gestão dos seus planos seja segura e privada.</p>
+                <h3>Controle Financeiro</h3>
+                <p>Saiba quem já efetuou o pagamento e quem continua pendente no ciclo atual com um clique.</p>
             </div>
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h3>Design Minimalista</h3>
+                <p>Uma interface fluida, focada na usabilidade e otimizada visualmente para o modo escuro.</p>
+            </div>
+            
+
+            
+
+            
         </div>
     </main>
 
