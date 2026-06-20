@@ -7,8 +7,9 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('cadastro/', views.cadastro_view, name='cadastro'),
     path('logout/', views.logout_view, name='logout'),
-    path('dashboard/cobrarAmigo/<str:email>/', views.cobrar_amigo, name='cobrarAmigo'),
-    path('grupo/<int:grupo_id>/cobrar-participantes/', views.cobrar_participantes, name='cobrar_participantes' ),
+    path('dashboard/cobrarAmigo/<str:email>/', views.cobrarAmigo, name='cobrarAmigo'),
+    
+    path('grupo/<int:grupo_id>/cobrar_participantes/', views.cobrar_participantes, name='cobrar_participantes' ),
     
     # Área Logada
     path('dashboard/', views.dashboard, name='dashboard'),
@@ -19,6 +20,7 @@ urlpatterns = [
     #gerenciamento de grupos
     path('grupo/entrar/<int:grupo_id>/', views.entrar_grupo, name='entrar_grupo'),
     path('grupo/<int:grupo_id>/', views.detalhe_grupo, name='detalhe_grupo'),
+    path('excluirGrupo/<int:grupo_id>/', views.excluirGrupo, name='excluirGrupo'),
     path('pagamento/<int:membro_id>/', views.marcar_pagamento, name='marcar_pagamento' ),     
     path('desfazer-pagamento/<int:membro_id>/', views.desfazer_pagamento, name='desfazer_pagamento'),
     path('pagamento/alternar/<int:membro_id>/', views.alternar_pagamento, name='alternar_pagamento'),

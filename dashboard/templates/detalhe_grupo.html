@@ -156,7 +156,7 @@
          </button>
                <a class="btn btn-dark" href="{% url 'cobrar_participantes' grupo.id %}" onclick="return confirm('Enviar cobrança para todos os participantes pendentes?');"> Cobrar participantes </a>
                 <a class="btn btn-dark" href="#">Editar grupo</a>
-                <a class="btn btn-danger" href="#">Excluir grupo</a>
+                <a class="btn btn-danger" href="{% url 'excluirGrupo' grupo.id %}" onclick="return confirm('Tem certeza que deseja excluir o grupo {{ grupo.name }}?');">Excluir grupo</a>
             </div>
         </div>
     {% elif usuario_eh_membro %}

@@ -7,6 +7,13 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse
 from dashboard import models
+from datetime import datetime
+from django.utils import timezone
+from .tasks import enviar_email_na_data
+
+import datetime
+import random
+import calendar
 
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
 
@@ -143,6 +150,58 @@ def dashboard(request):
     }
     
     return render(request, 'dashboard.html', context)
+
+
+def cobrarAmigo(request, email):
+    assunto = 'Lembrete de pagamento - Cobrança Individual'
+    mensagem = 'Verifique sua parte da assinatura do grupo está pendente. Acesse o App para regularizar seu pagamento.'
+    
+    if email:
+        try:
+            send_mail(
+                subject=assunto,
+                message=mensagem,
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+            messages.success(request, f"Cobrança enviada com sucesso para {email}!")
+        except Exception as e:
+            messages.error(request, f"Erro ao enviar e-mail: {e}")
+    else:
+        messages.error(request, "Não foi possível enviar a cobrança: e-mail inválido.")
+    
+    return redirect('dashboard')
+def agendar_novo_email(grupo_id, dia, streaming, plano):
+    agora = datetime.datetime.now()
+    nowDay = agora.day
+    ano = agora.year
+    mes = agora.month
+    nowHour = agora.hour
+    nowMinute = agora.minute
+    
+    data_envio = None
+    
+    if int(dia) < nowDay:
+        data_envio = datetime.datetime(ano, mes, nowDay, nowHour, nowMinute)
+    else:
+        data_envio = datetime.datetime(ano, mes, int(dia), 9, 0)
+        
+    data_envio_com_tz = timezone.make_aware(data_envio)
+    
+    grupo = models.Grupo.objects.filter(id=grupo_id).first()
+    lista_emails = list(grupo.membros.values_list('email', flat=True)) if grupo else []
+
+    # Agenda a tarefa passando a lista de strings puras
+    enviar_email_na_data.apply_async(
+        args=[
+            'corpaligator@gmail.com', 
+            'A Mensalidade venceu', 
+            f'A mensalidade do {streaming} vence em {dia}/{mes}/{ano}', 
+            lista_emails # isso é uma lista simples de strings,serializada
+        ],
+        eta=data_envio_com_tz
+    )
 @login_required(login_url='/login/')
 def criarGrupo(request):
     if request.method == 'POST':
@@ -153,11 +212,23 @@ def criarGrupo(request):
             descricao=request.POST.get('descricao'),
             plano_id=request.POST.get('plano'),
             streaming_id=request.POST.get('streaming'),
+            dia_vencimento = request.POST.get('dia_vencimento'),
             ocultar_membros=ocultar_membros
         )
+        
         grupo.save()
+        
+        agendar_novo_email(grupo.id,request.POST.get('dia_vencimento'),request.POST.get('streaming'),request.POST.get('plano') )
     return redirect("dashboard")
 
+
+@login_required(login_url='/login/')
+def excluirGrupo(request, grupo_id):
+    grupo = get_object_or_404(models.Grupo, id=grupo_id)
+    if request.method == 'GET':
+        grupo.delete()
+    return redirect("dashboard")
+            
 @login_required(login_url='/login/')
 def entrar_grupo(request, grupo_id):
     grupo = get_object_or_404(models.Grupo, id=grupo_id)
@@ -234,23 +305,10 @@ def detalhe_grupo(request, grupo_id):
     }
 
     return render(request, 'detalhe_grupo.html', context)
-# ==================== API / CRUD RÁPIDO ====================
-
-def cobrar_amigo(request,email):
-    if request.method == 'GET':
-        try:
-            send_mail(
-                subject='Lembrete de Assinatura - SubSplit',
-                message='Sua parte da assinatura vence amanhã. Valor: R$ 15,90.',
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[email],
-                fail_silently=False,
-            )
-            return HttpResponse("Cobrança enviada!")
-        except Exception as e:
-            return HttpResponse(f"Erro: {e}")
+# ==================== API / CRUD RÁPIDO ====================     
 
 @login_required(login_url='/login/')
+
 def cobrar_participantes(request, grupo_id):
     grupo = get_object_or_404(models.Grupo, id=grupo_id)
 
