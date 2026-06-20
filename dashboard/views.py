@@ -196,6 +196,32 @@ def detalhe_membro(request, membro_id):
     }
     return render(request, 'perfil_membro.html', context)
 
+
+@login_required(login_url='/login/')
+def detalhe_grupo(request, grupo_id):
+    grupo = get_object_or_404(models.Grupo, id=grupo_id)
+    membros = models.MembroGrupo.objects.filter(grupo=grupo)
+
+    # Segurança: só o dono ou membros do grupo podem ver
+    usuario_eh_dono = grupo.owner == request.user
+    usuario_eh_membro = membros.filter(participante=request.user).exists()
+
+    if not usuario_eh_dono and not usuario_eh_membro:
+        messages.error(request, "Você não tem permissão para acessar este grupo.")
+        return redirect('dashboard')
+
+    total_pessoas = membros.count() + 1
+    valor_por_pessoa = grupo.plano.preco_mensal / total_pessoas
+
+    context = {
+        'grupo': grupo,
+        'membros': membros,
+        'usuario_eh_dono': usuario_eh_dono,
+        'valor_por_pessoa': valor_por_pessoa,
+    }
+
+    return render(request, 'detalhe_grupo.html', context)
+
 # ==================== API / CRUD RÁPIDO ====================
 
 def cobrar_amigo(request,email):
@@ -267,6 +293,28 @@ def desfazer_pagamento(request, membro_id):
             grupo.streak_pagamentos -= 1
             
         grupo.save()
+    return redirect('dashboard')
+
+@login_required(login_url='/login/')
+def alternar_pagamento(request, membro_id):
+    membro = get_object_or_404(models.MembroGrupo, id=membro_id)
+    grupo = membro.grupo
+    estava_pago = membro.status_pagamento
+    membro.status_pagamento = not membro.status_pagamento
+    membro.save()
+    if not estava_pago:
+        todos_pagaram = not models.MembroGrupo.objects.filter(
+            grupo=grupo,
+            status_pagamento=False
+        ).exists()
+        if todos_pagaram and not grupo.assinatura_paga:
+            grupo.assinatura_paga = True
+            grupo.streak_pagamentos += 1
+    else:
+        grupo.assinatura_paga = False
+        if grupo.streak_pagamentos > 0:
+            grupo.streak_pagamentos -= 1
+    grupo.save()
     return redirect('dashboard')
 
 @login_required(login_url='/login/')

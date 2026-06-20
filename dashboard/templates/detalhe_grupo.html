@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ grupo.name }}</title>
+
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Inter, Arial, sans-serif;
+            margin: 0;
+            padding: 24px;
+        }
+
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .back {
+            color: #A855F7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .group-card, .member-card {
+            background: #111;
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .muted {
+            color: #888;
+            font-size: 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .info-box {
+            background: #1A1A1A;
+            border-radius: 14px;
+            padding: 14px;
+        }
+
+        .member-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .member-row:last-child {
+            border-bottom: none;
+        }
+
+        .paid {
+            color: #22C55E;
+            font-weight: 600;
+        }
+
+        .pending {
+            color: #EF4444;
+            font-weight: 600;
+        }
+
+        .owner-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background: #A855F7;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .btn-danger {
+            background: #EF4444;
+        }
+
+        .btn-dark {
+            background: #1A1A1A;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <a class="back" href="{% url 'dashboard' %}">← Voltar para dashboard</a>
+
+    <div class="group-card">
+        <p class="muted">Detalhes do grupo</p>
+        <h1>{{ grupo.name }}</h1>
+        <p class="muted">{{ grupo.descricao }}</p>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <p class="muted">Streaming</p>
+                <h3>{{ grupo.streaming.name }}</h3>
+            </div>
+
+            <div class="info-box">
+                <p class="muted">Plano</p>
+                <h3>{{ grupo.plano.name }}</h3>
+            </div>
+
+            <div class="info-box">
+                <p class="muted">Dono</p>
+                <h3>{{ grupo.owner.username }}</h3>
+            </div>
+
+            <div class="info-box">
+                <p class="muted">Valor por pessoa</p>
+                <h3>R$ {{ valor_por_pessoa|floatformat:2 }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="member-card">
+        <h2>Participantes</h2>
+
+        {% for membro in membros %}
+            <div class="member-row">
+                <div>
+                    <strong>{{ membro.participante.username }}</strong>
+                    <p class="muted">{{ membro.participante.email }}</p>
+                </div>
+
+                <div>
+                    {% if membro.status_pagamento %}
+                        <span class="paid">Pago ✅</span>
+                    {% else %}
+                        <span class="pending">Pendente</span>
+                    {% endif %}
+                </div>
+
+                {% if usuario_eh_dono %}
+                    <div class="owner-actions">
+                        <a class="btn btn-dark" href="{% url 'detalhe_membro' membro.id %}">Ver</a>
+                        <a class="btn btn-danger" href="{% url 'remover_membro' membro.id %}">Remover</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% empty %}
+            <p class="muted">Nenhum participante entrou neste grupo ainda.</p>
+        {% endfor %}
+    </div>
+
+</div>
+
+</body>
+</html>

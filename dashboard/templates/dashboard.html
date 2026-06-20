@@ -268,6 +268,9 @@
                 <button class="btn-invite" onclick="navigator.clipboard.writeText('{{ v.link_convite }}'); alert('Link de convite copiado com sucesso!');">
                     <span>🔗</span> Copiar Link de Convite
                 </button>
+                <a class="btn-invite" href="{% url 'detalhe_grupo' v.id %}" style="margin-top: 10px; text-decoration: none;">
+                   👥 Ver detalhes do grupo
+                 </a>
                 <div style="margin-top: 12px;">
     {% for membro in v.membros %}
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
@@ -279,18 +282,20 @@
             
             </span>
 
-            {% if not membro.status_pagamento %}
-                <a href="{% url 'marcar_pagamento' membro.id %}">
-                    Pagar
-                </a>
-            {% else %}
-                <span style="color: var(--success);">Pago ✅</span>
-                  
-                <a href="{% url 'desfazer_pagamento' membro.id %}"
-                     style="color: var(--danger); text-decoration: none; margin-left: 8px;">
-                   ↩️
-                  </a>
-            {% endif %}
+           <a href="{% url 'alternar_pagamento' membro.id %}"
+                style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+           <span style="color: {% if membro.status_pagamento %}var(--success){% else %}var(--danger){% endif %};">
+                {% if membro.status_pagamento %}
+                        Pago
+                {% else %}
+                        Pendente
+                {% endif %}
+    </span>
+
+    <input type="checkbox"
+           {% if membro.status_pagamento %}checked{% endif %}
+           onclick="event.preventDefault(); this.parentElement.click();">
+</a>
 
             <a href="{% url 'remover_membro' membro.id %}" 
                    onclick="return confirm('Tem certeza que deseja remover {{ membro.participante.username }} deste grupo?');" 
