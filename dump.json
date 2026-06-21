@@ -1,0 +1,3799 @@
+[
+{
+    "model": "dashboard.streaming",
+    "pk": 1,
+    "fields": {
+        "name": "Netflix",
+        "url": "https://www.netflix.com/br/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 2,
+    "fields": {
+        "name": "Spotify",
+        "url": "https://open.spotify.com/intl-pt",
+        "categoria": "Música"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 3,
+    "fields": {
+        "name": "Prime Video",
+        "url": "https://www.primevideo.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 4,
+    "fields": {
+        "name": "Disney+",
+        "url": "https://www.disneyplus.com/pt-br/select-profile",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 5,
+    "fields": {
+        "name": "HBO max",
+        "url": "https://www.hbomax.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 6,
+    "fields": {
+        "name": "Youtube Music",
+        "url": "https://music.youtube.com/",
+        "categoria": "Music"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 7,
+    "fields": {
+        "name": "Youtube Premium",
+        "url": "https://youtube.com",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 8,
+    "fields": {
+        "name": "Deezer",
+        "url": "https://www.deezer.com/",
+        "categoria": "Music"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 9,
+    "fields": {
+        "name": "Crunchyroll",
+        "url": "https://crunchyroll.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 10,
+    "fields": {
+        "name": "Apple TV+",
+        "url": "https://tv.apple.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 11,
+    "fields": {
+        "name": "Globoplay",
+        "url": "https://globoplay.globo.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 12,
+    "fields": {
+        "name": "Max (HBO)",
+        "url": "https://www.hbomax.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 13,
+    "fields": {
+        "name": "Paramount+",
+        "url": "https://www.paramountplus.com/",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.streaming",
+    "pk": 14,
+    "fields": {
+        "name": "Privacy",
+        "url": "https://privacy.com",
+        "categoria": "Video"
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 1,
+    "fields": {
+        "name": "Padrão com anúncios",
+        "preco_mensal": 20.0,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 1
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 2,
+    "fields": {
+        "name": "Individual",
+        "preco_mensal": 23.9,
+        "qualidade_video": "None",
+        "ativo": false,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 2
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 3,
+    "fields": {
+        "name": "Universitário",
+        "preco_mensal": 12.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 2
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 4,
+    "fields": {
+        "name": "Duo",
+        "preco_mensal": 31.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 2
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 5,
+    "fields": {
+        "name": "Família",
+        "preco_mensal": 40.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 2
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 6,
+    "fields": {
+        "name": "Padrão",
+        "preco_mensal": 44.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 1
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 7,
+    "fields": {
+        "name": "Plano Mensal",
+        "preco_mensal": 19.9,
+        "qualidade_video": "4K UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": true,
+        "streaming": 3
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 8,
+    "fields": {
+        "name": "Plano Mensal (Sem anúncios)",
+        "preco_mensal": 29.9,
+        "qualidade_video": "4K UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": false,
+        "streaming": 3
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 9,
+    "fields": {
+        "name": "Plano Anual",
+        "preco_mensal": 13.9,
+        "qualidade_video": "4K UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": true,
+        "streaming": 3
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 10,
+    "fields": {
+        "name": "Plano Anual (Sem anúncios)",
+        "preco_mensal": 23.9,
+        "qualidade_video": "4K UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": false,
+        "streaming": 3
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 11,
+    "fields": {
+        "name": "Padrão",
+        "preco_mensal": 43.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 4
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 12,
+    "fields": {
+        "name": "Padrão (Anual)",
+        "preco_mensal": 30.74,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 4
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 13,
+    "fields": {
+        "name": "Premium (Mensal)",
+        "preco_mensal": 62.9,
+        "qualidade_video": "4K UHD e HDR",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 4
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 14,
+    "fields": {
+        "name": "Premium (Anual)",
+        "preco_mensal": 43.99,
+        "qualidade_video": "4K UHD e HDR",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 4
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 15,
+    "fields": {
+        "name": "Padrão com Anúncios",
+        "preco_mensal": 17.99,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 4
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 16,
+    "fields": {
+        "name": "Básico com Anúncios (Mensal)",
+        "preco_mensal": 22.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 17,
+    "fields": {
+        "name": "Standard (Anual)",
+        "preco_mensal": 34.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 18,
+    "fields": {
+        "name": "Básico com Anúncios (Anual)",
+        "preco_mensal": 22.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 19,
+    "fields": {
+        "name": "Standard (Mensal)",
+        "preco_mensal": 44.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 20,
+    "fields": {
+        "name": "Platinum (Mensal)",
+        "preco_mensal": 55.9,
+        "qualidade_video": "4K UHD e Dolby Atmos",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 21,
+    "fields": {
+        "name": "Platinum (Anual)",
+        "preco_mensal": 44.9,
+        "qualidade_video": "4K UHD e Dolby Atmos",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 5
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 22,
+    "fields": {
+        "name": "Premium",
+        "preco_mensal": 59.9,
+        "qualidade_video": "4K UHD + HDR",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 1
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 23,
+    "fields": {
+        "name": "Individual",
+        "preco_mensal": 21.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 6
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 24,
+    "fields": {
+        "name": "Família",
+        "preco_mensal": 34.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 6
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 25,
+    "fields": {
+        "name": "Estudante",
+        "preco_mensal": 11.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 6
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 26,
+    "fields": {
+        "name": "Individual Anual",
+        "preco_mensal": 18.25,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 6
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 27,
+    "fields": {
+        "name": "Individual",
+        "preco_mensal": 26.9,
+        "qualidade_video": "1080p Premium / 8k",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 7
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 28,
+    "fields": {
+        "name": "Individual Anual",
+        "preco_mensal": 22.42,
+        "qualidade_video": "1080p Premium / 8k",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 7
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 29,
+    "fields": {
+        "name": "Família",
+        "preco_mensal": 53.9,
+        "qualidade_video": "1080p Premium / 8k",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 7
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 30,
+    "fields": {
+        "name": "Estudante",
+        "preco_mensal": 16.9,
+        "qualidade_video": "1080p Premium / 8k",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 7
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 31,
+    "fields": {
+        "name": "Premium Lite",
+        "preco_mensal": 16.9,
+        "qualidade_video": "1080p Premium / 8k",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 7
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 32,
+    "fields": {
+        "name": "Premium",
+        "preco_mensal": 24.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 33,
+    "fields": {
+        "name": "Duo",
+        "preco_mensal": 32.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 34,
+    "fields": {
+        "name": "Family",
+        "preco_mensal": 39.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 35,
+    "fields": {
+        "name": "Student",
+        "preco_mensal": 10.9,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 36,
+    "fields": {
+        "name": "Premium Anual",
+        "preco_mensal": 18.58,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 37,
+    "fields": {
+        "name": "Duo Anual",
+        "preco_mensal": 29.99,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 38,
+    "fields": {
+        "name": "Family Anual",
+        "preco_mensal": 36.58,
+        "qualidade_video": "None",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 8
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 39,
+    "fields": {
+        "name": "Fan",
+        "preco_mensal": 19.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 9
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 40,
+    "fields": {
+        "name": "Mega Fan",
+        "preco_mensal": 24.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 9
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 41,
+    "fields": {
+        "name": "Fan Anual",
+        "preco_mensal": 11.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 9
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 42,
+    "fields": {
+        "name": "Mega Fan Anual",
+        "preco_mensal": 14.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 9
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 43,
+    "fields": {
+        "name": "Plano Padrão",
+        "preco_mensal": 29.9,
+        "qualidade_video": "4k UHD + Dolby Vision",
+        "ativo": true,
+        "quantidade_telas": 6,
+        "anuncio": false,
+        "streaming": 10
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 44,
+    "fields": {
+        "name": "Padrão com Anúncios",
+        "preco_mensal": 22.9,
+        "qualidade_video": "4k UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": true,
+        "streaming": 11
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 45,
+    "fields": {
+        "name": "Premium",
+        "preco_mensal": 39.9,
+        "qualidade_video": "4k UHD",
+        "ativo": true,
+        "quantidade_telas": 5,
+        "anuncio": false,
+        "streaming": 11
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 46,
+    "fields": {
+        "name": "Padrão com Anúncios Anual",
+        "preco_mensal": 16.9,
+        "qualidade_video": "4k UHD",
+        "ativo": true,
+        "quantidade_telas": 3,
+        "anuncio": true,
+        "streaming": 11
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 47,
+    "fields": {
+        "name": "Premium Anual",
+        "preco_mensal": 22.9,
+        "qualidade_video": "4k UHD",
+        "ativo": true,
+        "quantidade_telas": 5,
+        "anuncio": false,
+        "streaming": 11
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 48,
+    "fields": {
+        "name": "Básico com Anúncios",
+        "preco_mensal": 29.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 49,
+    "fields": {
+        "name": "Standard",
+        "preco_mensal": 39.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 50,
+    "fields": {
+        "name": "Platinum",
+        "preco_mensal": 55.9,
+        "qualidade_video": "4k UHD + Dolby Atmos",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 51,
+    "fields": {
+        "name": "Básico com Anúncios Anual",
+        "preco_mensal": 18.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": true,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 52,
+    "fields": {
+        "name": "Standard Anual",
+        "preco_mensal": 29.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 53,
+    "fields": {
+        "name": "Platinum Anual",
+        "preco_mensal": 39.9,
+        "qualidade_video": "4K UHD + Dolby Atmos",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 12
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 54,
+    "fields": {
+        "name": "Padrão",
+        "preco_mensal": 34.9,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 13
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 55,
+    "fields": {
+        "name": "Premium",
+        "preco_mensal": 44.9,
+        "qualidade_video": "4k UHD + Dolby Atmos, Vision",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 13
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 56,
+    "fields": {
+        "name": "Padrão Anual",
+        "preco_mensal": 25.83,
+        "qualidade_video": "1080p",
+        "ativo": true,
+        "quantidade_telas": 2,
+        "anuncio": false,
+        "streaming": 13
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 57,
+    "fields": {
+        "name": "Premium Anual",
+        "preco_mensal": 33.33,
+        "qualidade_video": "4k UHD + Dolby Atmos, Vision",
+        "ativo": true,
+        "quantidade_telas": 4,
+        "anuncio": false,
+        "streaming": 13
+    }
+},
+{
+    "model": "dashboard.plano",
+    "pk": 58,
+    "fields": {
+        "name": "Beiçola da Privacy",
+        "preco_mensal": 49.9,
+        "qualidade_video": "1080p / 4k UHD",
+        "ativo": true,
+        "quantidade_telas": 1,
+        "anuncio": false,
+        "streaming": 14
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "054ti4fkiyazj6omivaq2z2xy7aypmw0",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWno2HYGl-45Axk6HUFNSSisjHdXEha6_e-9_zI9b-vYbzUv_STmYpw5_W4Dp0cuO5A7l9ts01zWZRrsrtiDVtvNkp_Xw_07GLmO3xqzdw21GNV5QtVGm0TRgbAbMLUKDkij0BmQgkRKHH1CCUEDCCCY9wfIDzcv:1wZWRD:i0F4SvNl39cXu0fLY0tOHLZw6ZPAqOLf5nazZok5j5A",
+        "expire_date": "2026-06-30T16:14:55.484Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2pldeqi2mb0ntnvbtjcf1kip79xbzda1",
+    "fields": {
+        "session_data": ".eJxVjM0OgjAQBt9lz6ahbLFbjt55BtJ2PyxqIOHnZHx3Q8JBrzOTeVMf9630-4qlH5VasnT5ZSnmJ6ZD6CNO99nkedqWMZkjMaddTTcrXrez_RuUuBZqqfbQZDNskkaddeA6KmewiI_MITDEXjMwQBTC7IIfhNFUlXpfZfp8AfT5OBY:1waXZo:Gn5PAk-tZ0v9MbM-Mn5Ucns1v4mbFxq7oDXkTNtWHUU",
+        "expire_date": "2026-07-03T11:40:00.367Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "2r6sndj37m72jjx7m9p3ou53s1ls90gk",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlmO4x-U9JzBWq93cQDZUpxUiLuTSCmgfTPz3iLCupS4dprjlMVFBHH63RLgk-oO8gPqvUlsdZmnJHdFHrTLW8v0uh7u30GBXraaDLENPitEsqMx1pBjl0cYdEJMVqMPCdifeRONBR5GpVgFVuw0BhafLwoSOM4:1wZTIn:EC-fL8SzTCLK7BIG9L3M5bATpTaydiWTmCjZYtNA-zI",
+        "expire_date": "2026-06-30T12:54:01.416Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "55pw4xzm2k0bsvlnhs8l1383nz3l5zu6",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWno2HYGl-45Axk6HUFNSSisjHdXEha6_e-9_zI9b-vYbzUv_STmYpw5_W4Dp0cuO5A7l9ts01zWZRrsrtiDVtvNkp_Xw_07GLmO3xqzdw21GNV5QtVGm0TRgbAbMLUKDkij0BmQgkRKHH1CCUEDCCCY9wfIDzcv:1wYrYb:aR2QSZdDts-Yd0nYSDsXB0miZ8wfEZ02VZgblQyZz8o",
+        "expire_date": "2026-06-28T20:35:49.321Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "61w4u738tj9hucdy4x00detmbntq478j",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSGEMjxcuvcbyAwMUjWQlHZl_Hdt0oVu7znnvkTEba1xG7zEOYuzAHH63QjTg9sO8h3brcvU27rMJHdFHnTIa8_8vBzu30HFUb81EgYPnpG1dzoRWMqTZVUQAicDTiWldVEpTGjBKirsKOjiyLCyxon3B_7VODo:1wZHM9:Pkk03f1f9yGwcaZ4aimTiB5hG8C1iO5cpOvm_X3WwgQ",
+        "expire_date": "2026-06-30T00:08:41.885Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6szvc75o6rpenqwfw1gi9ntzewtk0sgq",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyG0bPnx6N1nIMsuStVAUtqT8d0tSQ96m3zzzbxFwG3NYWtpCTOLswBx-mUR6ZlKL_iB5V4l1bIuc5RdkUfb5LVyel0O9-8gY8v7eiJETRbUqFLEhF73BDvwkXycrAGXcCDtQDsLxgzM7uY9jGjYKRKfL97HN3Q:1wZHHE:JKezWdDEQE61mfiaFjyX5QJA8mkIsvfmW1vqiSt__qk",
+        "expire_date": "2026-06-30T00:03:36.207Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "9bx5ql0uirzivjrhfkhmd8s6gbrg65in",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pACQ8q4dO8ZyMAMUjU0Ke3KeHdt0oVu_3vvv1Skba1x67LEidVZWXX63RLlh7Qd8J3abdZ5busyJb0r-qBdX2eW5-Vw_w4q9fqtHWJhBhQxowcH3rB3A1MIkD16smLABcMSGFKwxeFoYChWSqKAbNX7A9A8N4o:1wZbHa:YdxUFbFBvfnJhFygfazsekdnflKsVUvyl1QZeb6Z2zI",
+        "expire_date": "2026-06-30T21:25:18.535Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "9rzlziymlxp65ww5ezp5dei0tzt3iodw",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWno2HYGl-45Axk6HUFNSSisjHdXEha6_e-9_zI9b-vYbzUv_STmYpw5_W4Dp0cuO5A7l9ts01zWZRrsrtiDVtvNkp_Xw_07GLmO3xqzdw21GNV5QtVGm0TRgbAbMLUKDkij0BmQgkRKHH1CCUEDCCCY9wfIDzcv:1wZFsQ:sRB3ZHtVeHWTbBoJ4MHwUfjsc4LRIViaw-H8qdgmJcA",
+        "expire_date": "2026-06-29T22:33:54.503Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "a5c2t76f75w0qvryx1zvyctithqcbmah",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGll4HSeGkp4zWPszDiBHipMKcXeIlALaNzPvZRKuS0lr0zmNYs7GmcPvRsgPrRuQO9bbZHmqyzyS3RS702avk-jzsrt_BwVb-dZwOoIASh-jSOhoUCfoIZMI9NETZ89DBiTgLsSooBS8Y9DIHNg58_4A_M84sg:1wZdCh:9skMfgqzaCsstkbd_uip7I2oT5Mx37lop343klFRLi4",
+        "expire_date": "2026-06-30T23:28:23.329Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "agli7zhox96y4bx73hos5netkdav5vgm",
+    "fields": {
+        "session_data": ".eJxVjLsOwjAMAP8lM4pwHm3KyN5viOzYIQXUSk07If4dInWA9e50LxVx30rcq6xxYnVRYNTpFxKmh8zN8B3n26LTMm_rRLol-rBVjwvL83q0f4OCtbRvyplQQDxYcxYAwp4HZ7xNZPrMSAwegmWTDbtAnRWfaPhq64IPnXp_ACSNOFM:1wb47U:bW9CcCvc0g993g9FCoydadoJ0uVQuNcOgc49r-f-Rjo",
+        "expire_date": "2026-07-04T22:24:56.547Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "gd9j5oq6idbf8i8oec7t8yslcc1hfvhp",
+    "fields": {
+        "session_data": ".eJxVjLsOwjAMAP_FM4pqkzRJR_Z-Q-XEDimgVupjQvw7qtQB1rvTvWHgfavDvuoyjAIdRLj8ssT5qdMh5MHTfTZ5nrZlTOZIzGlX08-ir9vZ_g0qrxU60ESNj8UWV6wjuga0rcQQUZJ3TA4JCyVWF1rrEVUbQhcloc-RgxX4fAHIOjcf:1wb2hT:tf7eiuA71SV4EuzdQ4Ri2YEN44x1DlBQ9XWMhuM0sOg",
+        "expire_date": "2026-07-04T20:53:59.207Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "kpt9vn8rqg5uuo1psbmdqujgo7od15ea",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWno2HYGl-45Axk6HUFNSSisjHdXEha6_e-9_zI9b-vYbzUv_STmYpw5_W4Dp0cuO5A7l9ts01zWZRrsrtiDVtvNkp_Xw_07GLmO3xqzdw21GNV5QtVGm0TRgbAbMLUKDkij0BmQgkRKHH1CCUEDCCCY9wfIDzcv:1wZDs9:2ezjoEPALNPUlKExdhxRP7LmS05kpRQ_kFuZLmeQ0AU",
+        "expire_date": "2026-06-29T20:25:29.285Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "n51iiwppmmnw8kl4zgubcky4on2g25p6",
+    "fields": {
+        "session_data": ".eJxVjEEOgjAQRe_StWno2HYGl-45Axk6HUFNSSisjHdXEha6_e-9_zI9b-vYbzUv_STmYpw5_W4Dp0cuO5A7l9ts01zWZRrsrtiDVtvNkp_Xw_07GLmO3xqzdw21GNV5QtVGm0TRgbAbMLUKDkij0BmQgkRKHH1CCUEDCCCY9wfIDzcv:1wZSyF:hasfrbMPgZwabC7Y9EwcJisQdkdczjMgJkeBrhxwZqw",
+        "expire_date": "2026-06-30T12:32:47.896Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "ujwe5qoqj50l3xwwiuvj6btuhwz83s42",
+    "fields": {
+        "session_data": ".eJxVjDsOwjAQBe_iGlnG_6Wk5wzW2rvgALKlOKkQd4dIKaB9M_NeIuG61LQOntNE4iSCOPxuGcuD2wboju3WZeltmacsN0XudMhLJ36ed_fvoOKo39oY9Aods7_acsyaAF1ApyFYo7AUa7hYUtEFJh2zA9BgIgDF4HyMWbw_5Ck3Zw:1wZJel:-_gNLmjtA8L-cs79DHnBs-SHdOrzzAay4bLAwjUrw98",
+        "expire_date": "2026-06-30T02:36:03.682Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "uqqwrquxo6g4vpxuj7hfmbpb63fi5x77",
+    "fields": {
+        "session_data": ".eJxVjM0OwiAQhN-FsyG0bPnx6N1nIMsuStVAUtqT8d0tSQ96m3zzzbxFwG3NYWtpCTOLswBx-mUR6ZlKL_iB5V4l1bIuc5RdkUfb5LVyel0O9-8gY8v7eiJETRbUqFLEhF73BDvwkXycrAGXcCDtQDsLxgzM7uY9jGjYKRKfL97HN3Q:1wZHNR:yYUFWwaF0GZKZRr5d86fd1rGor_L_Yxeko8sn34UBxc",
+        "expire_date": "2026-06-30T00:10:01.809Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "yfc0610xjhpy26gpput4bayn7svqyf7d",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2pACQ8q4dO8ZyMAMUjU0Ke3KeHdt0oVu_3vvv1Skba1x67LEidVZWXX63RLlh7Qd8J3abdZ5busyJb0r-qBdX2eW5-Vw_w4q9fqtHWJhBhQxowcH3rB3A1MIkD16smLABcMSGFKwxeFoYChWSqKAbNX7A9A8N4o:1wZWQe:F4UrGmhW56XGU8cHjXJGMBECg9kqlL-l0K7nlcq-buc",
+        "expire_date": "2026-06-30T16:14:20.520Z"
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$9dzuvSVWJBIaOaXctXfdvl$ikNr9Gdrpz0sCJ5q7vXhcqerh96J/iQ4GV5gHgDpQhg=",
+        "last_login": "2026-06-19T11:40:00.358Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-06-14T18:46:46.425Z",
+        "data_cadastro": "2026-06-14",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$s9KGBCd39vNtbDcLlLxgIA$0ly3Zu5Cx0TO1HPRztR3vWNB4MCkYJalKvbFtnlxG2g=",
+        "last_login": "2026-06-16T21:25:18.523Z",
+        "is_superuser": false,
+        "username": "Gabriel",
+        "first_name": "",
+        "last_name": "",
+        "email": "gabrieloakbarreto@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T18:47:48.796Z",
+        "data_cadastro": "2026-06-14",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$fAeMVcasBAEXqHFKgedFES$Md8RFxKcaENVSZxi8qjLUV1X3JeunB7uunnJw2XdrPU=",
+        "last_login": "2026-06-14T20:45:46.379Z",
+        "is_superuser": false,
+        "username": "Esther",
+        "first_name": "",
+        "last_name": "",
+        "email": "esthergomespinheiro@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-14T20:45:35.531Z",
+        "data_cadastro": "2026-06-14",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$UqY7BZKWHZitA7H37axiNn$BgVvn6PqTCd6Qm80NfgQXGcx8m7NNTCJjpuhmg/dqis=",
+        "last_login": "2026-06-16T00:10:01.799Z",
+        "is_superuser": false,
+        "username": "nicolau",
+        "first_name": "",
+        "last_name": "",
+        "email": "nicolaslfmuller@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T00:03:27.212Z",
+        "data_cadastro": "2026-06-15",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$Jpllfvwcub40SaGzTj3KRC$HzMgeWo3HCpvi/WDhJlrSyKedZuy7wdO6UEwDFMy/k4=",
+        "last_login": "2026-06-16T00:08:41.877Z",
+        "is_superuser": false,
+        "username": "joao",
+        "first_name": "",
+        "last_name": "",
+        "email": "joao@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T00:08:36.343Z",
+        "data_cadastro": "2026-06-15",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$CkzpKNHz4owckJYoZE5rFe$gs3m24U3smCfaEUWkcdp9axn5OSpLi4pQ7LV8miDYnY=",
+        "last_login": "2026-06-16T02:36:03.679Z",
+        "is_superuser": false,
+        "username": "gabs",
+        "first_name": "",
+        "last_name": "",
+        "email": "gabs@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T02:35:54.279Z",
+        "data_cadastro": "2026-06-15",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$T5wi5A4wbP28taNm543sa8$aeqYh1uJpAuwGbuC22cG3IaHRrP4Me2c8f4lHhuEwsQ=",
+        "last_login": "2026-06-16T12:54:01.413Z",
+        "is_superuser": false,
+        "username": "luis",
+        "first_name": "",
+        "last_name": "",
+        "email": "luis@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T12:53:52.717Z",
+        "data_cadastro": "2026-06-16",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$vwFadi7NlFZKpFeuV7fpEu$I36Q6lzAUqdlRmWc8v29rLDq7RHzfuhlTGO3TVxGeZM=",
+        "last_login": "2026-06-20T20:53:59.195Z",
+        "is_superuser": false,
+        "username": "alan",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T18:41:07.334Z",
+        "data_cadastro": "2026-06-16",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$Pz0VfIN9f0d4aT9j0ZTIDD$H4bpObZt0he8WLauV427f/XARpjbdtWFhmUOtg15ihI=",
+        "last_login": "2026-06-16T18:49:15.200Z",
+        "is_superuser": false,
+        "username": "fiufiu",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T18:46:08.001Z",
+        "data_cadastro": "2026-06-16",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$7wF0KMwEBK6V32Nedko3dZ$fw1AErd0Veuc0MEbD5qlnfkTH9/09X/gkwUtQCklP54=",
+        "last_login": "2026-06-16T18:47:10.832Z",
+        "is_superuser": false,
+        "username": "fiofio",
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-16T18:46:58.551Z",
+        "data_cadastro": "2026-06-16",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.participante",
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$XMrCNv5yrLKupruaFrHdTB$TNmqIt4wXuWYoy4pQEfTUa7DxZlUD5s+8yuHhLMZa3k=",
+        "last_login": "2026-06-20T22:24:56.545Z",
+        "is_superuser": false,
+        "username": "Barreto",
+        "first_name": "",
+        "last_name": "",
+        "email": "gabrieloakbarreto@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-06-20T22:24:41.880Z",
+        "data_cadastro": "2026-06-20",
+        "status": true,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 13,
+    "fields": {
+        "owner": [
+            "admin"
+        ],
+        "name": "Netinha Das Gatinhas",
+        "descricao": "eu e elas",
+        "plano": 22,
+        "streaming": 1,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 1,
+        "assinatura_paga": true,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 14,
+    "fields": {
+        "owner": [
+            "admin"
+        ],
+        "name": "US",
+        "descricao": "galera",
+        "plano": 3,
+        "streaming": 2,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 15,
+    "fields": {
+        "owner": [
+            "admin"
+        ],
+        "name": "dancing queen",
+        "descricao": "us",
+        "plano": 8,
+        "streaming": 3,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 16,
+    "fields": {
+        "owner": [
+            "admin"
+        ],
+        "name": "dancing monkey",
+        "descricao": "sintu sintu evitarrrr",
+        "plano": 13,
+        "streaming": 4,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 17,
+    "fields": {
+        "owner": [
+            "admin"
+        ],
+        "name": "novo",
+        "descricao": "nova",
+        "plano": 18,
+        "streaming": 5,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 18,
+    "fields": {
+        "owner": [
+            "alan"
+        ],
+        "name": "familia netflix",
+        "descricao": "mensal",
+        "plano": 22,
+        "streaming": 1,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 1,
+        "assinatura_paga": true,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 19,
+    "fields": {
+        "owner": [
+            "alan"
+        ],
+        "name": "familia spotify",
+        "descricao": "divisao mensal",
+        "plano": 5,
+        "streaming": 2,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 1,
+        "assinatura_paga": true,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 20,
+    "fields": {
+        "owner": [
+            "fiufiu"
+        ],
+        "name": "familia",
+        "descricao": "divisao mensal",
+        "plano": 7,
+        "streaming": 3,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": true
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 21,
+    "fields": {
+        "owner": [
+            "alan"
+        ],
+        "name": "familia prime",
+        "descricao": "divisao mensal",
+        "plano": 7,
+        "streaming": 3,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 1,
+        "assinatura_paga": true,
+        "ocultar_membros": true
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 22,
+    "fields": {
+        "owner": [
+            "Gabriel"
+        ],
+        "name": "nova",
+        "descricao": "novinha",
+        "plano": 21,
+        "streaming": 5,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 23,
+    "fields": {
+        "owner": [
+            "luis"
+        ],
+        "name": "pesquisador 1",
+        "descricao": "gsfgsdg",
+        "plano": 43,
+        "streaming": 10,
+        "dia_vencimento": 20,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 24,
+    "fields": {
+        "owner": [
+            "luis"
+        ],
+        "name": "pesquisador 1",
+        "descricao": "gsfgsdg",
+        "plano": 43,
+        "streaming": 10,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 25,
+    "fields": {
+        "owner": [
+            "luis"
+        ],
+        "name": "pesquisador 1",
+        "descricao": "gsfgsdg",
+        "plano": 43,
+        "streaming": 10,
+        "dia_vencimento": 21,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 26,
+    "fields": {
+        "owner": [
+            "Gabriel"
+        ],
+        "name": "gffgsg",
+        "descricao": "fgsgsdg",
+        "plano": 58,
+        "streaming": 14,
+        "dia_vencimento": 20,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 1,
+        "assinatura_paga": true,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 28,
+    "fields": {
+        "owner": [
+            "Gabriel"
+        ],
+        "name": "Tudo que tiver de ser será",
+        "descricao": "nossa",
+        "plano": 4,
+        "streaming": 2,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 29,
+    "fields": {
+        "owner": [
+            "Gabriel"
+        ],
+        "name": "limiteBaixo",
+        "descricao": "sfasdfas",
+        "plano": 47,
+        "streaming": 11,
+        "dia_vencimento": 7,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.grupo",
+    "pk": 30,
+    "fields": {
+        "owner": [
+            "Barreto"
+        ],
+        "name": "pesquisador 1",
+        "descricao": "gsfgsdg",
+        "plano": 3,
+        "streaming": 2,
+        "dia_vencimento": 15,
+        "cobranca_automatica": true,
+        "streak_pagamentos": 0,
+        "assinatura_paga": false,
+        "ocultar_membros": false
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 4,
+    "fields": {
+        "grupo": 13,
+        "participante": [
+            "Gabriel"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 5,
+    "fields": {
+        "grupo": 18,
+        "participante": [
+            "fiufiu"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 6,
+    "fields": {
+        "grupo": 18,
+        "participante": [
+            "fiofio"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 7,
+    "fields": {
+        "grupo": 19,
+        "participante": [
+            "fiofio"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 8,
+    "fields": {
+        "grupo": 19,
+        "participante": [
+            "fiufiu"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 9,
+    "fields": {
+        "grupo": 21,
+        "participante": [
+            "fiufiu"
+        ],
+        "status_pagamento": true,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 10,
+    "fields": {
+        "grupo": 22,
+        "participante": [
+            "luis"
+        ],
+        "status_pagamento": false,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 13,
+    "fields": {
+        "grupo": 28,
+        "participante": [
+            "Barreto"
+        ],
+        "status_pagamento": false,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 14,
+    "fields": {
+        "grupo": 29,
+        "participante": [
+            "Barreto"
+        ],
+        "status_pagamento": false,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 15,
+    "fields": {
+        "grupo": 30,
+        "participante": [
+            "Gabriel"
+        ],
+        "status_pagamento": false,
+        "streak": 0
+    }
+},
+{
+    "model": "dashboard.membrogrupo",
+    "pk": 16,
+    "fields": {
+        "grupo": 26,
+        "participante": [
+            "Barreto"
+        ],
+        "status_pagamento": false,
+        "streak": 0
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-06-14T18:55:39.008Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "1",
+        "object_repr": "Netflix",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-06-14T18:56:42.971Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "2",
+        "object_repr": "Spotify",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-06-14T19:02:33.159Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "1",
+        "object_repr": "Plano object (1)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-06-14T19:05:25.167Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "2",
+        "object_repr": "Plano object (2)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-06-15T20:28:49.585Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "3",
+        "object_repr": "Plano object (3)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-06-15T20:30:14.666Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "4",
+        "object_repr": "Plano object (4)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-06-15T20:30:53.454Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "5",
+        "object_repr": "Plano object (5)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-06-15T22:36:09.191Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "6",
+        "object_repr": "Plano object (6)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-06-16T12:39:45.154Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "3",
+        "object_repr": "Prime Video",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-06-16T12:42:17.634Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "7",
+        "object_repr": "Plano object (7)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-06-16T12:43:29.866Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "8",
+        "object_repr": "Plano object (8)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-06-16T12:44:32.836Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "9",
+        "object_repr": "Plano object (9)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-06-16T12:44:51.807Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "3",
+        "object_repr": "Plano object (3)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Quantidade telas\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-06-16T12:44:51.808Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "2",
+        "object_repr": "Plano object (2)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Quantidade telas\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-06-16T12:48:53.719Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "10",
+        "object_repr": "Plano object (10)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-06-16T12:49:36.402Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "5",
+        "object_repr": "Plano object (5)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Streaming\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-06-16T12:49:36.403Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "4",
+        "object_repr": "Plano object (4)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Streaming\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-06-16T12:49:36.404Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "3",
+        "object_repr": "Plano object (3)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Streaming\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-06-16T12:49:36.404Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "2",
+        "object_repr": "Plano object (2)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Streaming\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-06-16T13:18:08.446Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "4",
+        "object_repr": "Disney+",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-06-16T13:20:43.954Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "11",
+        "object_repr": "Plano object (11)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-06-16T13:22:59.529Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "12",
+        "object_repr": "Plano object (12)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-06-16T13:26:17.782Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "13",
+        "object_repr": "Plano object (13)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-06-16T13:28:26.475Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "14",
+        "object_repr": "Plano object (14)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-06-16T13:29:34.448Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "15",
+        "object_repr": "Plano object (15)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-06-16T13:45:16.325Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "5",
+        "object_repr": "HBO max",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-06-16T13:46:33.449Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "16",
+        "object_repr": "Plano object (16)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-06-16T13:49:13.589Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "17",
+        "object_repr": "Plano object (17)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-06-16T15:22:18.975Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "16",
+        "object_repr": "Plano object (16)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-06-16T15:24:09.442Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "18",
+        "object_repr": "Plano object (18)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-06-16T15:25:12.304Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "17",
+        "object_repr": "Plano object (17)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Streaming\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-06-16T15:25:42.676Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "17",
+        "object_repr": "Plano object (17)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-06-16T15:26:34.935Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "19",
+        "object_repr": "Plano object (19)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-06-16T15:28:55.732Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "20",
+        "object_repr": "Plano object (20)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-06-16T15:29:58.931Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "21",
+        "object_repr": "Plano object (21)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "12",
+        "object_repr": "sd",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "11",
+        "object_repr": "sd",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "10",
+        "object_repr": "my",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "9",
+        "object_repr": "Prime das Gatinhas",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "8",
+        "object_repr": "pintones",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "7",
+        "object_repr": "hfgfh",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "6",
+        "object_repr": "Meu spotify",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "5",
+        "object_repr": "i'm glad u came",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "4",
+        "object_repr": "john",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "3",
+        "object_repr": "novo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "2",
+        "object_repr": "Galera do biel",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2026-06-16T15:30:27.997Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "grupo"
+        ],
+        "object_id": "1",
+        "object_repr": "grupo da familia",
+        "action_flag": 3,
+        "change_message": ""
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2026-06-16T15:34:52.177Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "22",
+        "object_repr": "Plano object (22)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2026-06-16T23:30:24.879Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "6",
+        "object_repr": "Youtube Music",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2026-06-16T23:31:15.587Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "21",
+        "object_repr": "Plano object (21)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2026-06-16T23:33:50.661Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "23",
+        "object_repr": "Plano object (23)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2026-06-16T23:36:49.731Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "24",
+        "object_repr": "Plano object (24)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2026-06-16T23:37:11.493Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "25",
+        "object_repr": "Plano object (25)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.981Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "22",
+        "object_repr": "Plano object (22)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.985Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "19",
+        "object_repr": "Plano object (19)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 56,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.987Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "18",
+        "object_repr": "Plano object (18)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 57,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.987Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "17",
+        "object_repr": "Plano object (17)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 58,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.987Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "16",
+        "object_repr": "Plano object (16)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 59,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.989Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "15",
+        "object_repr": "Plano object (15)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 60,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.990Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "12",
+        "object_repr": "Plano object (12)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 61,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.990Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "11",
+        "object_repr": "Plano object (11)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 62,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.991Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "6",
+        "object_repr": "Plano object (6)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 63,
+    "fields": {
+        "action_time": "2026-06-16T23:39:48.991Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "2",
+        "object_repr": "Plano object (2)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 64,
+    "fields": {
+        "action_time": "2026-06-16T23:43:05.366Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "14",
+        "object_repr": "Plano object (14)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 65,
+    "fields": {
+        "action_time": "2026-06-16T23:43:05.367Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "12",
+        "object_repr": "Plano object (12)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 66,
+    "fields": {
+        "action_time": "2026-06-16T23:44:15.202Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "26",
+        "object_repr": "Plano object (26)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 67,
+    "fields": {
+        "action_time": "2026-06-16T23:49:20.078Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "7",
+        "object_repr": "Youtube Premium",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 68,
+    "fields": {
+        "action_time": "2026-06-16T23:51:22.199Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "27",
+        "object_repr": "Plano object (27)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 69,
+    "fields": {
+        "action_time": "2026-06-16T23:56:21.395Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "28",
+        "object_repr": "Plano object (28)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 70,
+    "fields": {
+        "action_time": "2026-06-16T23:57:17.939Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "29",
+        "object_repr": "Plano object (29)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 71,
+    "fields": {
+        "action_time": "2026-06-17T00:05:53.501Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "30",
+        "object_repr": "Plano object (30)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 72,
+    "fields": {
+        "action_time": "2026-06-17T00:06:14.027Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "29",
+        "object_repr": "Plano object (29)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 73,
+    "fields": {
+        "action_time": "2026-06-17T00:06:14.028Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "28",
+        "object_repr": "Plano object (28)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 74,
+    "fields": {
+        "action_time": "2026-06-17T00:06:14.029Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "27",
+        "object_repr": "Plano object (27)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 75,
+    "fields": {
+        "action_time": "2026-06-17T00:07:22.394Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "31",
+        "object_repr": "Plano object (31)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 76,
+    "fields": {
+        "action_time": "2026-06-17T00:28:51.440Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "8",
+        "object_repr": "Deezer",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 77,
+    "fields": {
+        "action_time": "2026-06-17T00:29:24.266Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "32",
+        "object_repr": "Plano object (32)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 78,
+    "fields": {
+        "action_time": "2026-06-17T00:29:32.579Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "8",
+        "object_repr": "Deezer",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Categoria\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 79,
+    "fields": {
+        "action_time": "2026-06-17T00:30:28.311Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "33",
+        "object_repr": "Plano object (33)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 80,
+    "fields": {
+        "action_time": "2026-06-17T00:31:22.746Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "34",
+        "object_repr": "Plano object (34)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 81,
+    "fields": {
+        "action_time": "2026-06-17T00:32:10.209Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "35",
+        "object_repr": "Plano object (35)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 82,
+    "fields": {
+        "action_time": "2026-06-17T00:33:17.488Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "36",
+        "object_repr": "Plano object (36)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 83,
+    "fields": {
+        "action_time": "2026-06-17T00:33:35.910Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "37",
+        "object_repr": "Plano object (37)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 84,
+    "fields": {
+        "action_time": "2026-06-17T00:34:14.346Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "38",
+        "object_repr": "Plano object (38)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 85,
+    "fields": {
+        "action_time": "2026-06-17T00:37:10.607Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "9",
+        "object_repr": "Crunchyroll",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 86,
+    "fields": {
+        "action_time": "2026-06-17T00:39:27.974Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "39",
+        "object_repr": "Plano object (39)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 87,
+    "fields": {
+        "action_time": "2026-06-17T00:39:48.531Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "40",
+        "object_repr": "Plano object (40)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 88,
+    "fields": {
+        "action_time": "2026-06-17T00:40:29.969Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "41",
+        "object_repr": "Plano object (41)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 89,
+    "fields": {
+        "action_time": "2026-06-17T00:40:49.794Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "42",
+        "object_repr": "Plano object (42)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 90,
+    "fields": {
+        "action_time": "2026-06-17T00:45:31.534Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "10",
+        "object_repr": "Apple TV+",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 91,
+    "fields": {
+        "action_time": "2026-06-19T11:40:44.569Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "42",
+        "object_repr": "Plano object (42)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 92,
+    "fields": {
+        "action_time": "2026-06-19T11:40:44.570Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "41",
+        "object_repr": "Plano object (41)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 93,
+    "fields": {
+        "action_time": "2026-06-19T11:42:13.990Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "43",
+        "object_repr": "Plano object (43)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 94,
+    "fields": {
+        "action_time": "2026-06-19T11:58:48.505Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "11",
+        "object_repr": "Globoplay",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 95,
+    "fields": {
+        "action_time": "2026-06-19T12:00:52.885Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "44",
+        "object_repr": "Plano object (44)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 96,
+    "fields": {
+        "action_time": "2026-06-19T12:02:33.167Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "45",
+        "object_repr": "Plano object (45)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 97,
+    "fields": {
+        "action_time": "2026-06-19T12:03:20.769Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "46",
+        "object_repr": "Plano object (46)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 98,
+    "fields": {
+        "action_time": "2026-06-19T12:03:52.652Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "46",
+        "object_repr": "Plano object (46)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 99,
+    "fields": {
+        "action_time": "2026-06-19T12:03:52.655Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "45",
+        "object_repr": "Plano object (45)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 100,
+    "fields": {
+        "action_time": "2026-06-19T12:03:52.655Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "44",
+        "object_repr": "Plano object (44)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 101,
+    "fields": {
+        "action_time": "2026-06-19T12:03:52.656Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "43",
+        "object_repr": "Plano object (43)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Qualidade video\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 102,
+    "fields": {
+        "action_time": "2026-06-19T12:04:31.493Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "47",
+        "object_repr": "Plano object (47)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 103,
+    "fields": {
+        "action_time": "2026-06-19T12:10:00.381Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "12",
+        "object_repr": "Max (HBO)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 104,
+    "fields": {
+        "action_time": "2026-06-19T12:10:26.385Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "48",
+        "object_repr": "Plano object (48)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 105,
+    "fields": {
+        "action_time": "2026-06-19T12:10:48.180Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "49",
+        "object_repr": "Plano object (49)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 106,
+    "fields": {
+        "action_time": "2026-06-19T12:11:17.448Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "50",
+        "object_repr": "Plano object (50)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 107,
+    "fields": {
+        "action_time": "2026-06-19T12:15:11.175Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "51",
+        "object_repr": "Plano object (51)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 108,
+    "fields": {
+        "action_time": "2026-06-19T12:15:21.103Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "51",
+        "object_repr": "Plano object (51)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Quantidade telas\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 109,
+    "fields": {
+        "action_time": "2026-06-19T12:16:05.265Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "52",
+        "object_repr": "Plano object (52)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 110,
+    "fields": {
+        "action_time": "2026-06-19T12:16:45.659Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "53",
+        "object_repr": "Plano object (53)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 111,
+    "fields": {
+        "action_time": "2026-06-19T12:19:07.122Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "13",
+        "object_repr": "Paramount+",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 112,
+    "fields": {
+        "action_time": "2026-06-19T12:19:35.003Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "54",
+        "object_repr": "Plano object (54)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 113,
+    "fields": {
+        "action_time": "2026-06-19T12:21:22.240Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "54",
+        "object_repr": "Plano object (54)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Name\", \"Quantidade telas\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 114,
+    "fields": {
+        "action_time": "2026-06-19T12:23:45.638Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "55",
+        "object_repr": "Plano object (55)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 115,
+    "fields": {
+        "action_time": "2026-06-19T12:24:51.524Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "56",
+        "object_repr": "Plano object (56)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 116,
+    "fields": {
+        "action_time": "2026-06-19T12:25:32.421Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "57",
+        "object_repr": "Plano object (57)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 117,
+    "fields": {
+        "action_time": "2026-06-19T12:26:46.810Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "streaming"
+        ],
+        "object_id": "14",
+        "object_repr": "Privacy",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 118,
+    "fields": {
+        "action_time": "2026-06-19T12:28:44.817Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "plano"
+        ],
+        "object_id": "58",
+        "object_repr": "Plano object (58)",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 119,
+    "fields": {
+        "action_time": "2026-06-19T12:36:47.217Z",
+        "user": [
+            "admin"
+        ],
+        "content_type": [
+            "dashboard",
+            "participante"
+        ],
+        "object_id": "6",
+        "object_repr": "Novo",
+        "action_flag": 3,
+        "change_message": ""
+    }
+}
+]
