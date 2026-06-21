@@ -168,7 +168,13 @@
              🔗Copiar link
          </button>
                <a class="btn btn-dark" href="{% url 'cobrar_participantes' grupo.id %}" onclick="return confirm('Enviar cobrança para todos os participantes pendentes?');"> Cobrar participantes </a>
-                <a class="btn btn-dark" href="#">Editar grupo</a>
+                <a class="btn btn-dark" href="{% url 'alternar_ocultar_membros' grupo.id %}">
+                    {% if grupo.ocultar_membros %}
+                 Mostrar membros do grupo
+                    {% else %}
+                 Ocultar membros do grupo
+                    {% endif %}
+                </a>
                 <a class="btn btn-danger" href="{% url 'excluirGrupo' grupo.id %}" onclick="return confirm('Tem certeza que deseja excluir o grupo {{ grupo.name }}?');">Excluir grupo</a>
             </div>
         </div>
@@ -184,7 +190,15 @@
     {% endif %}
 
     <div class="member-card">
-        <h2>Participantes</h2>
+    <h2>Participantes</h2>
+
+    {% if grupo.ocultar_membros and not usuario_eh_dono %}
+
+        <p class="muted">
+            O proprietário deste grupo optou por ocultar a lista de participantes.
+        </p>
+
+       {% else %}
 
         {% for membro in membros %}
             <div class="member-row">
@@ -237,6 +251,7 @@
         {% empty %}
             <p class="muted">Nenhum participante entrou neste grupo ainda.</p>
         {% endfor %}
+        {% endif %}
     </div>
 
 </div>

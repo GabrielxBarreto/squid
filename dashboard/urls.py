@@ -27,6 +27,7 @@ urlpatterns = [
     path('grupo/sair/<int:grupo_id>/', views.sair_grupo, name='sair_grupo'),
     path('membro/<int:membro_id>/', views.detalhe_membro, name='detalhe_membro'),
     path('membro/<int:membro_id>/remover/', views.remover_membro, name='remover_membro'),
+    path('grupo/<int:grupo_id>/ocultar-membros/', views.alternar_ocultar_membros, name='alternar_ocultar_membros'),
     # APIs e Testes
     path('api/users/', views.listUsers, name='api_users'),
     path('api/users/updateUser/<int:id>/', views.updateUser, name='updateUser'),

@@ -404,6 +404,19 @@ def alternar_pagamento(request, membro_id):
     return redirect('detalhe_grupo', grupo_id=grupo.id)
 
 @login_required(login_url='/login/')
+def alternar_ocultar_membros(request, grupo_id):
+    grupo = get_object_or_404(models.Grupo, id=grupo_id)
+
+    if grupo.owner != request.user:
+        messages.error(request, "Você não tem permissão para alterar este grupo.")
+        return redirect('dashboard')
+
+    grupo.ocultar_membros = not grupo.ocultar_membros
+    grupo.save()
+
+    return redirect('detalhe_grupo', grupo_id=grupo.id)
+
+@login_required(login_url='/login/')
 def remover_membro(request, membro_id):
     membro_grupo = get_object_or_404(models.MembroGrupo, id=membro_id)
 
