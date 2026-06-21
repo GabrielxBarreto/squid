@@ -1,4 +1,5 @@
 from celery import shared_task
+from django.conf import settings
 from django.core.mail import send_mail
 from celery import shared_task
 from django.core.mail import send_mail
@@ -17,3 +18,13 @@ def enviar_email_na_data(email, assunto, mensagem, membros):
                 recipient_list=[participante.email],
                 fail_silently=False,
             )
+            
+@shared_task
+def enviar_cobranca_assincrona(email_destino, assunto, mensagem):
+    send_mail(
+        subject=assunto,
+        message=mensagem,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email_destino],
+        fail_silently=False,
+    )

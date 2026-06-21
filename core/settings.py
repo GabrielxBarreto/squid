@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'authSys',
     
 ]
-CELERY_BROKER_URL = 'redis://localhost:6379/0'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_BROKER_URL = 'redis://red-d8rlr53eo5us73dhhvng:6379'
+CELERY_RESULT_BACKEND = 'redis://red-d8rlr53eo5us73dhhvng:6379'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 MIDDLEWARE = [
@@ -75,6 +75,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+CELERY_IGNORE_RESULT = True
 
 # Configurações de E-mail (Exemplo com Gmail)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

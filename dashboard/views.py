@@ -10,6 +10,7 @@ from dashboard import models
 from datetime import datetime
 from django.utils import timezone
 from .tasks import enviar_email_na_data
+from .tasks import enviar_cobranca_assincrona
 
 import datetime
 import random
@@ -152,22 +153,17 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+@login_required(login_url='/login/') # A trava de segurança que comentei antes!
 def cobrarAmigo(request, email):
     assunto = 'Lembrete de pagamento - Cobrança Individual'
-    mensagem = 'Verifique sua parte da assinatura do grupo está pendente. Acesse o App para regularizar seu pagamento.'
+    mensagem = 'Verifique sua parte da assinatura do grupo que está pendente. Acesse o App para regularizar seu pagamento.'
     
     if email:
-        try:
-            send_mail(
-                subject=assunto,
-                message=mensagem,
-                from_email=settings.EMAIL_HOST_USER,
-                recipient_list=[email],
-                fail_silently=False,
-            )
-            messages.success(request, f"Cobrança enviada com sucesso para {email}!")
-        except Exception as e:
-            messages.error(request, f"Erro ao enviar e-mail: {e}")
+        # Usa o .delay() para enviar a tarefa para o Celery em background
+        enviar_cobranca_assincrona.delay(email, assunto, mensagem)
+        
+        # A página carrega na hora, sem esperar o e-mail ser de fato enviado
+        messages.success(request, f"A cobrança para {email} foi adicionada à fila de envio!")
     else:
         messages.error(request, "Não foi possível enviar a cobrança: e-mail inválido.")
     
