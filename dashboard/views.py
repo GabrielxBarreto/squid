@@ -5,16 +5,12 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
-from django.http import HttpResponse
-from dashboard import models
-from datetime import datetime
-from django.utils import timezone
-from .tasks import enviar_email_na_data
-from .tasks import enviar_cobranca_assincrona
 
-import datetime
-import random
-import calendar
+from dashboard import models
+
+
+from django.shortcuts import render
+from .decorators import verificar_e_enviar_cobrancas
 
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
 
@@ -72,7 +68,9 @@ def carregar_planos(request):
 
 # ==================== ÁREA LOGADA ====================
 
+
 @login_required(login_url='/login/')
+@verificar_e_enviar_cobrancas
 def dashboard(request):
     usuario = request.user
     meus_grupos = models.Grupo.objects.filter(owner=usuario)
@@ -153,6 +151,17 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+
+
+
+
+
+
+    
+
+
+
+
 @login_required(login_url='/login/') # A trava de segurança que comentei antes!
 def cobrarAmigo(request, email):
     assunto = 'Lembrete de pagamento - Cobrança Individual'
@@ -160,7 +169,13 @@ def cobrarAmigo(request, email):
     
     if email:
         # Usa o .delay() para enviar a tarefa para o Celery em background
-        enviar_cobranca_assincrona.delay(email, assunto, mensagem)
+        send_mail(
+        subject=assunto,
+        message=mensagem,
+        from_email=settings.EMAIL_HOST_USER,
+        recipient_list=[email],
+        fail_silently=False,
+    )
         
         # A página carrega na hora, sem esperar o e-mail ser de fato enviado
         messages.success(request, f"A cobrança para {email} foi adicionada à fila de envio!")
@@ -168,36 +183,7 @@ def cobrarAmigo(request, email):
         messages.error(request, "Não foi possível enviar a cobrança: e-mail inválido.")
     
     return redirect('dashboard')
-def agendar_novo_email(grupo_id, dia, streaming, plano):
-    agora = datetime.datetime.now()
-    nowDay = agora.day
-    ano = agora.year
-    mes = agora.month
-    nowHour = agora.hour
-    nowMinute = agora.minute
-    
-    data_envio = None
-    
-    if int(dia) < nowDay:
-        data_envio = datetime.datetime(ano, mes, nowDay, nowHour, nowMinute)
-    else:
-        data_envio = datetime.datetime(ano, mes, int(dia), 9, 0)
-        
-    data_envio_com_tz = timezone.make_aware(data_envio)
-    
-    grupo = models.Grupo.objects.filter(id=grupo_id).first()
-    lista_emails = list(grupo.membros.values_list('email', flat=True)) if grupo else []
 
-    # Agenda a tarefa passando a lista de strings puras
-    enviar_email_na_data.apply_async(
-        args=[
-            'corpaligator@gmail.com', 
-            'A Mensalidade venceu', 
-            f'A mensalidade do {streaming} vence em {dia}/{mes}/{ano}', 
-            lista_emails # isso é uma lista simples de strings,serializada
-        ],
-        eta=data_envio_com_tz
-    )
 @login_required(login_url='/login/')
 def criarGrupo(request):
     if request.method == 'POST':
@@ -214,7 +200,6 @@ def criarGrupo(request):
         
         grupo.save()
         
-        agendar_novo_email(grupo.id,request.POST.get('dia_vencimento'),request.POST.get('streaming'),request.POST.get('plano') )
     return redirect("dashboard")
 
 

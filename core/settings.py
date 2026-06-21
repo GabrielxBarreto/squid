@@ -38,13 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_celery_beat',
+    
     'authSys',
     
 ]
-CELERY_BROKER_URL = 'redis://red-d8rlr53eo5us73dhhvng:6379'
-CELERY_RESULT_BACKEND = 'redis://red-d8rlr53eo5us73dhhvng:6379'
-CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
