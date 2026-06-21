@@ -77,16 +77,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 
 
-
 # Configuração para o Resend (Alternativa sem burocracia)
-ANYMAIL = {
-    "RESEND_API_KEY": "re_JX9kRMWc_Yse1Bf7WnDhuFMYd8jna3BqJ",
-}
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+# Puxando as chaves secretas direto do painel do Render!
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
 
 # Como você não tem domínio próprio, o Resend te dá um de teste que funciona na hora:
-DEFAULT_FROM_EMAIL = "onboarding@resend.dev"
+
 
 # Configurações de E-mail (Exemplo com Gmail)
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

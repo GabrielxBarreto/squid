@@ -152,13 +152,6 @@ def dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
-
-
-    
-
-
-
-
 @login_required(login_url='/login/')
 def cobrarAmigo(request, email):
     assunto = 'Lembrete de pagamento - Cobrança Individual'
@@ -166,18 +159,15 @@ def cobrarAmigo(request, email):
     
     if email:
         try:
-            # Usando o send_mail padrão do Django. 
-            # O Anymail vai interceptar e mandar via API automaticamente!
             send_mail(
                 subject=assunto,
                 message=mensagem,
-                from_email=None,  # None faz o Django usar o DEFAULT_FROM_EMAIL do settings.py
+                from_email=settings.DEFAULT_FROM_EMAIL, 
                 recipient_list=[email],
                 fail_silently=False,
             )
             messages.success(request, f"O e-mail para {email} foi enfileirado para envio.")
         except Exception as e:
-            # Se der erro real, o usuário é avisado sem o site cair
             messages.error(request, f"Erro ao tentar enviar e-mail: {str(e)}")
     else:
         messages.error(request, "Não foi possível enviar a cobrança: e-mail inválido.")
