@@ -160,23 +160,25 @@ def dashboard(request):
 
 
 
-@login_required(login_url='/login/') # A trava de segurança que comentei antes!
+@login_required(login_url='/login/')
 def cobrarAmigo(request, email):
     assunto = 'Lembrete de pagamento - Cobrança Individual'
     mensagem = 'Verifique sua parte da assinatura do grupo que está pendente. Acesse o App para regularizar seu pagamento.'
     
     if email:
-        
-        send_mail(
-        subject=assunto,
-        message=mensagem,
-        from_email="corpaligator@gmail.com",
-        recipient_list=[email],
-        fail_silently=False,
-    )
-        
-        # A página carrega na hora, sem esperar o e-mail ser de fato enviado
-        messages.success(request, f"A cobrança para {email} foi adicionada à fila de envio!")
+        try:
+            # Adicione fail_silently=True aqui!
+            send_mail(
+                subject=assunto,
+                message=mensagem,
+                from_email=settings.EMAIL_HOST_USER, # Use as configs do settings.py
+                recipient_list=[email],
+                fail_silently=True, 
+            )
+            messages.success(request, f"O e-mail para {email} foi enfileirado para envio.")
+        except Exception as e:
+            # Se der erro real, o usuário é avisado sem o site cair
+            messages.error(request, f"Erro ao tentar enviar e-mail: {str(e)}")
     else:
         messages.error(request, "Não foi possível enviar a cobrança: e-mail inválido.")
     
