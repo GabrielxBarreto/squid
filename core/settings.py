@@ -74,28 +74,19 @@ WSGI_APPLICATION = 'core.wsgi.application'
 
 # settings.py
 
-INSTALLED_APPS += [
-    "anymail",
-]
+# settings.py
+import os
 
-EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+# REMOVA O ANYMAIL E AS CONFIGURAÇÕES DE RESEND DAQUI
+# Apenas isto importa agora:
 
-ANYMAIL = {
-    "RESEND_API_KEY": os.environ.get("RESEND_API_KEY"),
-}
-
-DEFAULT_FROM_EMAIL = "corpaligator@gmail.com"
-
-# Como você não tem domínio próprio, o Resend te dá um de teste que funciona na hora:
-
-
-# Configurações de E-mail (Exemplo com Gmail)
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_PORT = 587
-#EMAIL_USE_TLS = True
-#EMAIL_HOST_USER = 'corpaligator@gmail.com'
-#EMAIL_HOST_PASSWORD = 'wzgt lbjk rlbp fwbc' # Use variáveis de ambiente (python-dotenv)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') 
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
