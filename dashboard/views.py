@@ -10,7 +10,9 @@ from dashboard import models
 
 
 from django.shortcuts import render
-from .decorators import verificar_e_enviar_cobrancas
+from django.utils import timezone
+from .models import Grupo, MembroGrupo
+
 
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
 
@@ -70,7 +72,7 @@ def carregar_planos(request):
 
 
 @login_required(login_url='/login/')
-@verificar_e_enviar_cobrancas
+
 def dashboard(request):
     usuario = request.user
     meus_grupos = models.Grupo.objects.filter(owner=usuario)
@@ -153,10 +155,6 @@ def dashboard(request):
 
 
 
-
-
-
-
     
 
 
@@ -172,7 +170,7 @@ def cobrarAmigo(request, email):
         send_mail(
         subject=assunto,
         message=mensagem,
-        from_email=settings.EMAIL_HOST_USER,
+        from_email="corpaligator@gmail.com",
         recipient_list=[email],
         fail_silently=False,
     )
