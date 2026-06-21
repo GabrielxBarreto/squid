@@ -24,7 +24,7 @@ urlpatterns = [
     path('pagamento/<int:membro_id>/', views.marcar_pagamento, name='marcar_pagamento' ),     
     path('desfazer-pagamento/<int:membro_id>/', views.desfazer_pagamento, name='desfazer_pagamento'),
     path('pagamento/alternar/<int:membro_id>/', views.alternar_pagamento, name='alternar_pagamento'),
-
+    path('grupo/sair/<int:grupo_id>/', views.sair_grupo, name='sair_grupo'),
     path('membro/<int:membro_id>/', views.detalhe_membro, name='detalhe_membro'),
     path('membro/<int:membro_id>/remover/', views.remover_membro, name='remover_membro'),
     # APIs e Testes

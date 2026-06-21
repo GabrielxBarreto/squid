@@ -177,8 +177,8 @@
             <h2>👤 Minha Área</h2>
 
             <div class="owner-actions" style="margin-top: 16px;">
-                <a class="btn btn-dark" href="#">Meu pagamento</a>
-                <a class="btn btn-danger" href="#">Sair do grupo</a>
+                <a class="btn btn-danger"href="{% url 'sair_grupo' grupo.id %}" onclick="return confirm('Tem certeza que deseja sair do grupo {{ grupo.name }}?');"> Sair do grupo
+             </a>
             </div>
         </div>
     {% endif %}
@@ -194,14 +194,23 @@
                 </div>
 
                 <div>
-                   <a href="{% url 'alternar_pagamento' membro.id %}" style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
+                  {% if usuario_eh_dono %}
+                  <a href="{% url 'alternar_pagamento' membro.id %}"
+                             style="text-decoration: none; display: flex; align-items: center; gap: 8px;">
 
-    <span class="{% if membro.status_pagamento %}paid{% else %}pending{% endif %}"></span>  {% if membro.status_pagamento %}  Pago  {% else %}  Pendente {% endif %} </span>
+                                <span class="{% if membro.status_pagamento %}paid{% else %}pending{% endif %}">
+                   {% if membro.status_pagamento %}Pago{% else %}Pendente{% endif %}
+            </span>
 
-        <input type="checkbox"
-           {% if membro.status_pagamento %}checked{% endif %} onclick="event.preventDefault(); this.parentElement.click();">
-         </a>
-                </div>
+                        <input type="checkbox"
+                            {% if membro.status_pagamento %}checked{% endif %} onclick="event.preventDefault(); this.parentElement.click();">
+            </a>
+                   {% else %}
+                         <span class="{% if membro.status_pagamento %}paid{% else %}pending{% endif %}">
+                   {% if membro.status_pagamento %}Pago{% else %}Pendente{% endif %}
+           </span>
+                   {% endif %}
+            </div>
 
                 {% if usuario_eh_dono %}
                     <div class="owner-actions">

@@ -87,6 +87,7 @@ def dashboard(request):
         minha_parte = valor_plano / total_pessoas
         
         grupos_participando.append({
+            'id': grupo_alheio.id,
             'nome_streaming': grupo_alheio.streaming.name,
             'dono': grupo_alheio.owner.username,
             'dia_vencimento': grupo_alheio.dia_vencimento,
@@ -381,6 +382,9 @@ def desfazer_pagamento(request, membro_id):
 def alternar_pagamento(request, membro_id):
     membro = get_object_or_404(models.MembroGrupo, id=membro_id)
     grupo = membro.grupo
+    if grupo.owner != request.user:
+     messages.error(request, "Você não tem permissão para alterar pagamentos.")
+     return redirect('dashboard')
     estava_pago = membro.status_pagamento
     membro.status_pagamento = not membro.status_pagamento
     membro.save()
@@ -416,4 +420,21 @@ def remover_membro(request, membro_id):
     membro_grupo.delete()
     
     messages.success(request, f"{nome_usuario} foi removido do grupo do {nome_streaming}.")
+    return redirect('dashboard')
+
+@login_required(login_url='/login/')
+def sair_grupo(request, grupo_id):
+    vinculo = get_object_or_404(
+        models.MembroGrupo,
+        grupo_id=grupo_id,
+        participante=request.user
+    )
+
+    vinculo.delete()
+
+    messages.success(
+        request,
+        f"Você saiu do grupo {vinculo.grupo.name}."
+    )
+
     return redirect('dashboard')
