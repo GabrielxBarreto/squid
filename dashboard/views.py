@@ -151,30 +151,25 @@ def dashboard(request):
     
     return render(request, 'dashboard.html', context)
 
-import resend
-import os
 
-resend.api_key = os.environ.get('RESEND_API_KEY')
 @login_required(login_url='/login/')
 def cobrarAmigo(request, email):
-    assunto = 'Lembrete de pagamento - Cobrança Individual'
-    mensagem = 'Verifique sua parte da assinatura do grupo que está pendente. Acesse o App para regularizar seu pagamento.'
-    
     if email:
         try:
-            params = {
-                "from": "onboarding@resend.dev", # Ou seu domínio verificado
-                "to": [email],
-                "subject": "Lembrete de pagamento",
-                "html": "<p>Sua parte da assinatura está pendente. Acesse o App!</p>"
-            }
-            resend.Emails.send(params)
+            # O send_mail utiliza a configuração do EMAIL_BACKEND do seu settings.py
+            send_mail(
+                subject='Lembrete de pagamento',
+                message='Sua parte da assinatura está pendente. Acesse o App!',
+                html_message='<p>Sua parte da assinatura está pendente. Acesse o App!</p>',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                fail_silently=False,
+            )
             messages.success(request, f"E-mail enviado para {email} via Resend.")
         except Exception as e:
             messages.error(request, f"Erro ao enviar e-mail: {e}")
     
     return redirect('dashboard')
-
 @login_required(login_url='/login/')
 def criarGrupo(request):
     if request.method == 'POST':
