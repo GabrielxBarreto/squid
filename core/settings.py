@@ -154,3 +154,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Ativa a compressão e o cache do WhiteNoise (melhora a performance)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL = 'dashboard.Participante'
+
+print(f"DEBUG: EMAIL_BACKEND configurado como: {EMAIL_BACKEND}")
