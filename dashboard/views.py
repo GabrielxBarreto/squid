@@ -13,7 +13,9 @@ from django.shortcuts import render
 from django.utils import timezone
 from .models import Grupo, MembroGrupo
 
+import resend
 
+resend.api_key = "re_drXBAp3e_5MTiSWJiCzBEHwAchK1EjQWv"
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
 
 def index(request):
@@ -167,15 +169,14 @@ def cobrarAmigo(request, email):
     
     if email:
         try:
-            # Adicione fail_silently=True aqui!
-            send_mail(
-                subject=assunto,
-                message=mensagem,
-                from_email=settings.EMAIL_HOST_USER, # Use as configs do settings.py
-                recipient_list=[email],
-                fail_silently=True, 
-            )
-            messages.success(request, f"O e-mail para {email} foi enfileirado para envio.")
+          
+           r = resend.Emails.send({
+           "from":"corpaligator@gmail.com" ,
+           "to": email,
+           "subject": assunto,
+           "html":mensagem
+           })
+           messages.success(request, f"O e-mail para {email} foi enfileirado para envio.")
         except Exception as e:
             # Se der erro real, o usuário é avisado sem o site cair
             messages.error(request, f"Erro ao tentar enviar e-mail: {str(e)}")
