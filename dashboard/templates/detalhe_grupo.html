@@ -154,18 +154,25 @@
             background-color: var(--surface);
             border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 14px;
-            padding: 16px;
+            padding: 16px 12px;
             text-align: center;
+            min-width: 0;
+            overflow-wrap: anywhere;
         }
 
         .status-item p {
             margin: 0 0 8px 0;
+            font-size: 13px; 
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;   
         }
 
         .status-item h3 {
             margin-top: 4px;
             font-size: 32px;
             font-weight: 700;
+            line-height: 1.2;
         }
 
         .status-item span{
@@ -182,6 +189,11 @@
             padding:18px;
             margin-bottom:14px;
             transition:all .25s ease;
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            gap: 14px;
         }
 
         .member-row:last-child {
@@ -196,6 +208,8 @@
             display:flex;
             align-items:center;
             gap:14px;
+            flex: 1;
+            min-width: 0;
         }
 
         .avatar{
@@ -217,7 +231,9 @@
 
         .member-info {
             flex: 1;
-            min-width: 150px;
+            min-width: 0;
+            word-break: break-word;
+            overflow-wrap: anywhere;
         }
 
         .status-wrapper {
@@ -394,10 +410,6 @@
         @media (max-width:768px){
 
             .info-grid{
-                grid-template-columns:1fr;
-            }
-
-            .status-grid{
                 grid-template-columns:1fr;
             }
 
