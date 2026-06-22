@@ -154,7 +154,7 @@ def dashboard(request):
 
 
 @login_required(login_url='/login/')
-def cobrarAmigo(request, email):
+def cobrarAmigo(request, grupo_id, email):
     if email:
         try:
             # O send_mail utiliza a configuração do EMAIL_BACKEND do seu settings.py
@@ -170,7 +170,7 @@ def cobrarAmigo(request, email):
         except Exception as e:
             messages.error(request, f"Erro ao enviar e-mail: {e}")
     
-    return redirect('dashboard')
+    return redirect('detalhe_grupo', grupo_id=grupo_id)
 @login_required(login_url='/login/')
 def criarGrupo(request):
     if request.method == 'POST':

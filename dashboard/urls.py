@@ -7,7 +7,7 @@ urlpatterns = [
     path('login/', views.login_view, name='login'),
     path('cadastro/', views.cadastro_view, name='cadastro'),
     path('logout/', views.logout_view, name='logout'),
-    path('dashboard/cobrarAmigo/<str:email>/', views.cobrarAmigo, name='cobrarAmigo'),
+    path('dashboard/cobrarAmigo/<int:grupo_id>/<str:email>/', views.cobrarAmigo, name='cobrarAmigo'),
     
     path('grupo/<int:grupo_id>/cobrar_participantes/', views.cobrar_participantes, name='cobrar_participantes' ),
     
