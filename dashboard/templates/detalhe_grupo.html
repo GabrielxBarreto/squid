@@ -231,13 +231,19 @@
                        <a class="btn btn-dark" href="{% url 'detalhe_membro' membro.id %}">Ver</a>
 
                      {% if membro.participante.email %}
-                       <a class="btn btn-dark" href="{% url 'cobrarAmigo' membro.participante.email %}">
-                    Cobrar
-                       </a>
+                       {% if not membro.status_pagamento %}
+                         <a class="btn btn-dark" href="{% url 'cobrarAmigo' membro.participante.email %}">
+                           Cobrar
+                         </a>
+                       {% else %}
+                         <span class="btn btn-secondary" style="opacity: 0.65; cursor: not-allowed;">
+                           Já pago
+                         </span>
+                       {% endif %}
                     {% else %}
-                   <span class="btn btn-dark" style="opacity: 0.5; cursor: not-allowed;">
-                     Sem email
-                    </span>
+                       <span class="btn btn-dark" style="opacity: 0.5; cursor: not-allowed;">
+                         Sem email
+                       </span>
                     {% endif %}
 
                        <a class="btn btn-danger"
