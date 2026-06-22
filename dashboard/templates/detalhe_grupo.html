@@ -474,23 +474,7 @@
     </div>
 
     <div class="member-card">
-        <h2>Participantes</h2>
-
-        <div class="status-card">
-            <h2>Status de pagamento</h2>
-            <div class="status-grid">
-                <div class="status-item">
-                    <p class="muted">Pagos</p>
-                    <h3>{{ membros_pagos }}</h3>
-                </div>
-                <div class="status-item">
-                    <p class="muted">Pendentes</p>
-                    <h3>{{ membros_pendentes }}</h3>
-                </div>
-            </div>
-        </div>
-
-        </div>
+        
 
     {% if usuario_eh_dono %}
         <div class="group-card">
@@ -626,7 +610,7 @@
                          </a>
                        {% else %}
                          <span class="btn btn-secondary" style="opacity: 0.65; cursor: not-allowed;">
-                           Já pago
+                           Cobrado
                          </span>
                        {% endif %}
                     {% else %}
