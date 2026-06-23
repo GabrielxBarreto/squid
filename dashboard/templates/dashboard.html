@@ -41,7 +41,8 @@
         .section-title { font-size: 16px; margin-bottom: 16px; color: #E2E8F0; letter-spacing: 0.5px; }
         .item-card { background-color: var(--card-bg); border: 1px solid #171A21; border-radius: 16px; margin-bottom: 16px; transition: transform 0.2s, border-color 0.2s; }
         .item-row { display: flex; justify-content: space-between; align-items: center; }
-        .item-info { display: flex; align-items: center; gap: 16px; }
+        .item-info { display: flex; align-items: center; gap: 16px; min-width: 0; flex: 1; margin-right: 12px; }
+        .item-info h4 { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; max-width: 100%;}
         .item-icon { width: 48px; height: 48px; background-color: var(--surface); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
         /* Botão de Convite Interno */
@@ -263,16 +264,16 @@
                                 <span>📺</span>
                             {% endif %}
                         </div>
-                        <div>
-                            <h4 style="font-size: 16px;">
-                              {{ v.nome_grupo }}
-
-                             <span class="streak-badge streak-{{ v.streak_pagamentos }} ">
-                              <span class="streak-fire">🔥</span>
-                                  {{ v.streak_pagamentos }}
-                              </span>
-                                       </h4>
-                            <p style="font-size: 13px; color: var(--text-muted);">Dia {{ v.dia }}</p>
+                        <div style="min-width: 0; flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 4px;">
+                                <h4 style="font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin: 0;">
+                                    {{ v.nome_grupo }}
+                                </h4>
+                                <span class="streak-badge streak-{{ v.streak_pagamentos }}" style="flex-shrink: 0;">
+                                    <span class="streak-fire">🔥</span>{{ v.streak_pagamentos }}
+                                </span>
+                            </div>
+                            <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Dia {{ v.dia }}</p>
                         </div>
                     </div>
                     <div style="text-align: right;">
