@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -37,9 +38,18 @@
         .logo {
             font-size: 20px;
             font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
             background: linear-gradient(135deg, #00E5FF, #00A3B8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .logo img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
         }
 
         .nav-buttons {
@@ -213,7 +223,10 @@
 <body>
 
     <header>
-        <div class="logo">SQUID</div>
+        <div class="logo">
+            <img src="{% static 'icons/SQUID.svg' %}" alt="Logo SQUID">
+            <span>SQUID</span>
+        </div>
         <div class="nav-buttons">
             <a href="{% url 'login' %}" class="btn-login">Entrar</a>
             <a href="{% url 'cadastro' %}" class="btn-cta-nav">Criar Conta</a>
