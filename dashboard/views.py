@@ -44,16 +44,15 @@ def cadastro_view(request):
         # Validação simples
         if models.Participante.objects.filter(username=name).exists():
             messages.error(request, 'Nome de usuário já existe.')
-            return render(request, 'cadastro.html')
-
-        user = models.Participante.objects.create_user(
-            username=name, 
-            email=email,
-            password=senha 
-        )
-        user.save()
-        messages.success(request, 'Conta criada com sucesso!')
-        return redirect("login")
+        else:
+            user = models.Participante.objects.create_user(
+                username=name, 
+                email=email,
+                password=senha 
+            )
+            user.save()
+            messages.success(request, 'Conta criada com sucesso!')
+            return redirect("login")
         
     return render(request, 'cadastro.html')
 
