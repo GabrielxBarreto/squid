@@ -1,3 +1,4 @@
+from abc import ABC, abstractmethod
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.contrib.auth.decorators import login_required
@@ -5,13 +6,135 @@ from django.contrib import messages
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils import timezone
 
 from dashboard import models
 
+# =========================================================================
+# PADRÃO 1: OBSERVER (NOTIFICAÇÕES E COBRANÇAS DESACOPLADAS)
+# =========================================================================
 
-from django.shortcuts import render
-from django.utils import timezone
-from .models import Grupo, MembroGrupo
+class NotificationObserver(ABC):
+    @abstractmethod
+    def update(self, event_type, context):
+        pass
+
+class EmailBillingObserver(NotificationObserver):
+    """Observer responsável por disparar e-mails do sistema."""
+    def update(self, event_type, context):
+        if event_type == 'cobrar_unico':
+            email = context.get('email')
+            send_mail(
+                subject='Lembrete de pagamento',
+                message='Sua parte da assinatura está pendente. Acesse o App!',
+                html_message='<p>Sua parte da assinatura está pendente. Acesse o App!</p>',
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[email],
+                fail_silently=False,
+            )
+        elif event_type == 'cobrar_lista':
+            membro = context.get('membro')
+            grupo = context.get('grupo')
+            send_mail(
+                subject=f'Lembrete de pagamento - {grupo.streaming.name}',
+                message=(
+                    f'Olá, {membro.participante.username}.\n\n'
+                    f'Sua parte da assinatura do grupo "{grupo.name}" ainda está pendente.\n'
+                    f'Valor aproximado: R$ {membro.valor_devido:.2f}.\n\n'
+                    f'Acesse o SubSplit para regularizar seu pagamento.'
+                ),
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                recipient_list=[membro.participante.email],
+                fail_silently=True,
+            )
+
+class BillingPublisher:
+    """Sujeito que armazena e notifica observadores cadastrados."""
+    def __init__(self):
+        self._observers = []
+
+    def attach(self, observer):
+        if observer not in self._observers:
+            self._observers.append(observer)
+
+    def notify(self, event_type, context):
+        for observer in self._observers:
+            observer.update(event_type, context)
+
+# Inicialização global do Publisher e registro do Observer de Email
+billing_publisher = BillingPublisher()
+billing_publisher.attach(EmailBillingObserver())
+
+
+# =========================================================================
+# PADRÃO 2: FACTORY METHOD (CUSTOMIZAÇÃO POR PLATAFORMA)
+# =========================================================================
+
+class StreamingFactory(ABC):
+    @abstractmethod
+    def configurar_assinatura(self, grupo, plano):
+        pass
+
+class NetflixFactory(StreamingFactory):
+    def configurar_assinatura(self, grupo, plano):
+        grupo.descricao = f"[Netflix - {plano.name}] {grupo.descricao or ''}".strip()
+        return grupo
+
+class SpotifyFactory(StreamingFactory):
+    def configurar_assinatura(self, grupo, plano):
+        grupo.descricao = f"[Spotify Família - {plano.name}] {grupo.descricao or ''}".strip()
+        return grupo
+
+class GenericStreamingFactory(StreamingFactory):
+    def configurar_assinatura(self, grupo, plano):
+        return grupo
+
+class StreamingFactoryProvider:
+    @staticmethod
+    def get_factory(streaming_name):
+        name_lower = streaming_name.lower()
+        if 'netflix' in name_lower:
+            return NetflixFactory()
+        elif 'spotify' in name_lower:
+            return SpotifyFactory()
+        return GenericStreamingFactory()
+
+
+# =========================================================================
+# PADRÃO 3: FACADE (FACHADA UNIFICADA DE CRIAÇÃO)
+# =========================================================================
+
+class AssinaturaFacade:
+    @staticmethod
+    def criar_assinatura_compartilhada(user, data):
+        plano_id = data.get('plano')
+        streaming_id = data.get('streaming')
+        name = data.get('name')
+        descricao = data.get('descricao')
+        dia_vencimento = data.get('dia_vencimento')
+        ocultar_membros = data.get('ocultar_membros') == 'on'
+
+        plano = models.Plano.objects.get(id=plano_id)
+        streaming = models.Streaming.objects.get(id=streaming_id)
+
+        # Criação da entidade básica
+        grupo = models.Grupo(
+            owner=user,
+            name=name,
+            descricao=descricao,
+            plano=plano,
+            streaming=streaming,
+            dia_vencimento=dia_vencimento,
+            ocultar_membros=ocultar_membros
+        )
+
+        # Execução das regras específicas do Factory Method escolhido
+        factory = StreamingFactoryProvider.get_factory(streaming.name)
+        grupo = factory.configurar_assinatura(grupo, plano)
+        
+        grupo.save()
+        return grupo
+
 
 # ==================== PÁGINAS PÚBLICAS E AUTENTICAÇÃO ====================
 
@@ -41,23 +164,18 @@ def cadastro_view(request):
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         
-        # Validação simples de nome
         if models.Participante.objects.filter(username=name).exists():
             messages.error(request, 'Nome de usuário já existe.')
-            
-        # Validação simples de e-mail
-        elif models.Participante.objects.filter(email=email).exists():
-            messages.error(request, 'Este e-mail já está em uso.')
-            
-        else:
-            user = models.Participante.objects.create_user(
-                username=name, 
-                email=email,
-                password=senha 
-            )
-            user.save()
-            messages.success(request, 'Conta criada com sucesso!')
-            return redirect("login")
+            return render(request, 'cadastro.html')
+
+        user = models.Participante.objects.create_user(
+            username=name, 
+            email=email,
+            password=senha 
+        )
+        user.save()
+        messages.success(request, 'Conta criada com sucesso!')
+        return redirect("login")
         
     return render(request, 'cadastro.html')
 
@@ -67,15 +185,13 @@ def logout_view(request):
 
 def carregar_planos(request):
     streaming_id = request.GET.get('streaming_id')
-    # Filtra os planos onde a chave estrangeira do streaming bate com o ID enviado
     planos = models.Plano.objects.filter(streaming_id=streaming_id).values('id', 'name')
     return JsonResponse(list(planos), safe=False)
 
+
 # ==================== ÁREA LOGADA ====================
 
-
 @login_required(login_url='/login/')
-
 def dashboard(request):
     usuario = request.user
     meus_grupos = models.Grupo.objects.filter(owner=usuario)
@@ -85,7 +201,7 @@ def dashboard(request):
     for vinculo in vincos_participante:
         grupo_alheio = vinculo.grupo
         membros_desse_grupo = models.MembroGrupo.objects.filter(grupo=grupo_alheio)
-        total_pessoas = membros_desse_grupo.count() + 1 # Membros + Dono
+        total_pessoas = membros_desse_grupo.count() + 1 
         
         valor_plano = grupo_alheio.plano.preco_mensal
         minha_parte = valor_plano / total_pessoas
@@ -103,7 +219,6 @@ def dashboard(request):
             'streak_pagamentos': grupo_alheio.streak_pagamentos,
         })
 
-    # Cálculos Financeiros
     gasto_total = 0
     economia_total = 0
     proximos_vencimentos = []
@@ -111,19 +226,12 @@ def dashboard(request):
 
     for grupo in meus_grupos:
         valor_plano = grupo.plano.preco_mensal
-
         membros_grupo = models.MembroGrupo.objects.filter(grupo=grupo)
-
-        total_pessoas = grupo.membros.count() + 1 # Membros + Dono
+        total_pessoas = grupo.membros.count() + 1 
         
-        # Quanto o dono realmente paga
         meu_gasto_real = valor_plano / total_pessoas
         gasto_total += meu_gasto_real
-        
-        # Quanto o dono economiza por dividir
         economia_total += (valor_plano - meu_gasto_real)
-        
-        
 
         proximos_vencimentos.append({
             'id': grupo.id,
@@ -135,10 +243,9 @@ def dashboard(request):
             'pendentes_count': membros_grupo.filter(status_pagamento=False).count(),
             'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/"),
             'membros': membros_grupo,
-            'streak_pagamentos': group.streak_pagamentos,
-})
+            'streak_pagamentos': grupo.streak_pagamentos,
+        })
         
-        # Buscar amigos que estão a dever neste grupo
         devedores = models.MembroGrupo.objects.filter(grupo=grupo, status_pagamento=False)
         for devedor in devedores:
             amigos_pendentes.append({
@@ -152,11 +259,10 @@ def dashboard(request):
         'economia_total': f"{economia_total:.2f}".replace('.', ','),
         'vencimentos': proximos_vencimentos,
         'pendentes': amigos_pendentes,
-        'grupos_participando' : grupos_participando,
+        'grupos_participando': grupos_participando,
         'streamings': models.Streaming.objects.all(),
         'planos': models.Plano.objects.all(),
     }
-    
     return render(request, 'dashboard.html', context)
 
 
@@ -164,36 +270,23 @@ def dashboard(request):
 def cobrarAmigo(request, grupo_id, email):
     if email:
         try:
-            # O send_mail utiliza a configuração do EMAIL_BACKEND do seu settings.py
-            send_mail(
-                subject='Lembrete de pagamento',
-                message='Sua parte da assinatura está pendente. Acesse o App!',
-                html_message='<p>Sua parte da assinatura está pendente. Acesse o App!</p>',
-                from_email=settings.DEFAULT_FROM_EMAIL,
-                recipient_list=[email],
-                fail_silently=False,
-            )
+            # Uso do padrão Observer para disparar a ação de envio
+            billing_publisher.notify('cobrar_unico', {'email': email})
             messages.success(request, f"E-mail enviado para {email} via Resend.")
         except Exception as e:
             messages.error(request, f"Erro ao enviar e-mail: {e}")
-    
     return redirect('detalhe_grupo', grupo_id=grupo_id)
+
+
 @login_required(login_url='/login/')
 def criarGrupo(request):
     if request.method == 'POST':
-        ocultar_membros = request.POST.get('ocultar_membros') == 'on'
-        grupo = models.Grupo.objects.create(
-            owner=request.user, # Pega o usuário logado com segurança
-            name=request.POST.get('name'),
-            descricao=request.POST.get('descricao'),
-            plano_id=request.POST.get('plano'),
-            streaming_id=request.POST.get('streaming'),
-            dia_vencimento = request.POST.get('dia_vencimento'),
-            ocultar_membros=ocultar_membros
-        )
-        
-        grupo.save()
-        
+        try:
+            # Uso do padrão Facade para unificar e encapsular a criação
+            AssinaturaFacade.criar_assinatura_compartilhada(request.user, request.POST)
+            messages.success(request, "Grupo de assinatura criado com sucesso!")
+        except Exception as e:
+            messages.error(request, f"Erro ao criar o grupo de assinatura: {e}")
     return redirect("dashboard")
 
 
@@ -208,29 +301,23 @@ def excluirGrupo(request, grupo_id):
 def entrar_grupo(request, grupo_id):
     grupo = get_object_or_404(models.Grupo, id=grupo_id)
     
-    # 1. Se o dono clicar no próprio link, não faz sentido ele entrar como membro
     if grupo.owner == request.user:
         messages.warning(request, "Você é o dono deste grupo!")
         return redirect('dashboard')
         
-    # 2. Verificar se o usuário já está no grupo para não duplicar
     if models.MembroGrupo.objects.filter(grupo=grupo, participante=request.user).exists():
         messages.info(request, "Você já faz parte deste grupo!")
         return redirect('dashboard')
         
-    # 3. Adiciona o participante usando a tabela intermediária que você criou
     models.MembroGrupo.objects.create(grupo=grupo, participante=request.user)
     messages.success(request, f"Boa! Você entrou no grupo {grupo.name}.")
-    
     return redirect('dashboard')
 
 @login_required(login_url='/login/')
 def detalhe_membro(request, membro_id):
-    # Pega o registro do membro associado ao grupo
     membro_grupo = get_object_or_404(models.MembroGrupo, id=membro_id)
     grupo = membro_grupo.grupo
     
-    # Segurança: Apenas o dono do grupo pode ver esse perfil individual
     if grupo.owner != request.user:
         messages.error(request, "Você não tem permissão para visualizar este perfil.")
         return redirect('dashboard')
@@ -241,7 +328,6 @@ def detalhe_membro(request, membro_id):
         'grupo': grupo
     }
     return render(request, 'perfil_membro.html', context)
-
 
 @login_required(login_url='/login/')
 def detalhe_grupo(request, grupo_id):
@@ -273,17 +359,12 @@ def detalhe_grupo(request, grupo_id):
         'total_pessoas': total_pessoas,
         'membros_pagos': membros_pagos,
         'membros_pendentes': membros_pendentes,
-
-        'link_convite': request.build_absolute_uri(
-        f"/grupo/entrar/{grupo.id}/"
-    ),
+        'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/"),
     }
-
     return render(request, 'detalhe_grupo.html', context)
-# ==================== API / CRUD RÁPIDO ====================     
+
 
 @login_required(login_url='/login/')
-
 def cobrar_participantes(request, grupo_id):
     grupo = get_object_or_404(models.Grupo, id=grupo_id)
 
@@ -291,34 +372,18 @@ def cobrar_participantes(request, grupo_id):
         messages.error(request, "Você não tem permissão para cobrar participantes deste grupo.")
         return redirect('dashboard')
 
-    membros_pendentes = models.MembroGrupo.objects.filter(
-        grupo=grupo,
-        status_pagamento=False
-    )
-
+    membros_pendentes = models.MembroGrupo.objects.filter(grupo=grupo, status_pagamento=False)
     enviados = 0
     sem_email = 0
 
     for membro in membros_pendentes:
-        email = membro.participante.email
-
-        if email:
+        if membro.participante.email:
             try:
-                send_mail(
-                    subject=f'Lembrete de pagamento - {grupo.streaming.name}',
-                    message=(
-                        f'Olá, {membro.participante.username}.\n\n'
-                        f'Sua parte da assinatura do grupo "{grupo.name}" ainda está pendente.\n'
-                        f'Valor aproximado: R$ {membro.valor_devido:.2f}.\n\n'
-                        f'Acesse o SubSplit para regularizar seu pagamento.'
-                    ),
-                    from_email=settings.DEFAULT_FROM_EMAIL,
-                    recipient_list=[email],
-                    fail_silently=True,
-                )
+                # Uso do padrão Observer substituindo a chamada direta de envio de e-mail local
+                billing_publisher.notify('cobrar_lista', {'membro': membro, 'grupo': grupo})
                 enviados += 1
             except Exception as e:
-                messages.error(request, f"Erro ao enviar para {email}: {e}")
+                messages.error(request, f"Erro ao enviar para {membro.participante.email}: {e}")
         else:
             sem_email += 1
 
@@ -326,8 +391,8 @@ def cobrar_participantes(request, grupo_id):
         request,
         f"Cobrança enviada para {enviados} participante(s). {sem_email} participante(s) sem email."
     )
-
     return redirect('detalhe_grupo', grupo_id=grupo.id)
+
 
 def listUsers(request):
     users = list(models.Participante.objects.values('id', 'username', 'email'))
@@ -355,11 +420,7 @@ def marcar_pagamento(request, membro_id):
         membro.save()
 
     grupo = membro.grupo
-
-    todos_pagaram = not models.MembroGrupo.objects.filter(
-        grupo=grupo,
-        status_pagamento=False
-    ).exists()
+    todos_pagaram = not models.MembroGrupo.objects.filter(grupo=grupo, status_pagamento=False).exists()
 
     if todos_pagaram and not grupo.assinatura_paga:
         grupo.assinatura_paga = True
@@ -376,7 +437,6 @@ def desfazer_pagamento(request, membro_id):
     if membro.status_pagamento:
         membro.status_pagamento = False
         membro.save()
-
         grupo.assinatura_paga = False
         
         if grupo.streak_pagamentos > 0:
@@ -390,16 +450,15 @@ def alternar_pagamento(request, membro_id):
     membro = get_object_or_404(models.MembroGrupo, id=membro_id)
     grupo = membro.grupo
     if grupo.owner != request.user:
-     messages.error(request, "Você não tem permissão para alterar pagamentos.")
-     return redirect('dashboard')
+        messages.error(request, "Você não tem permissão para alterar pagamentos.")
+        return redirect('dashboard')
+        
     estava_pago = membro.status_pagamento
     membro.status_pagamento = not membro.status_pagamento
     membro.save()
+    
     if not estava_pago:
-        todos_pagaram = not models.MembroGrupo.objects.filter(
-            grupo=grupo,
-            status_pagamento=False
-        ).exists()
+        todos_pagaram = not models.MembroGrupo.objects.filter(grupo=grupo, status_pagamento=False).exists()
         if todos_pagaram and not grupo.assinatura_paga:
             grupo.assinatura_paga = True
             grupo.streak_pagamentos += 1
@@ -427,16 +486,12 @@ def alternar_ocultar_membros(request, grupo_id):
 def remover_membro(request, membro_id):
     membro_grupo = get_object_or_404(models.MembroGrupo, id=membro_id)
 
-    # Segurança: Garante que apenas o OWNER do grupo pode remover alguém
     if membro_grupo.grupo.owner != request.user:
         messages.error(request, "Você não tem permissão para remover este participante.")
         return redirect('dashboard')
     
-    # Guarda o nome antes de deletar para exibir na mensagem
     nome_usuario = membro_grupo.participante.username
     nome_streaming = membro_grupo.grupo.streaming.name
-
-    # Remove o participante do grupo
     membro_grupo.delete()
     
     messages.success(request, f"{nome_usuario} foi removido do grupo do {nome_streaming}.")
@@ -444,17 +499,7 @@ def remover_membro(request, membro_id):
 
 @login_required(login_url='/login/')
 def sair_grupo(request, grupo_id):
-    vinculo = get_object_or_404(
-        models.MembroGrupo,
-        grupo_id=grupo_id,
-        participante=request.user
-    )
-
+    vinculo = get_object_or_404(models.MembroGrupo, grupo_id=grupo_id, participante=request.user)
     vinculo.delete()
-
-    messages.success(
-        request,
-        f"Você saiu do grupo {vinculo.grupo.name}."
-    )
-
+    messages.success(request, f"Você saiu do grupo {vinculo.grupo.name}.")
     return redirect('dashboard')
