@@ -81,7 +81,7 @@
         }
 
         .forgot-password:hover {
-            color: #00A3B8
+            color: #00A3B8;
             text-decoration: underline;
         }
 
@@ -145,14 +145,24 @@
             text-decoration: underline;
         }
 
-        .error-message {
-            background: rgba(255, 59, 59, 0.08);
-            border: 1px solid rgba(255, 59, 59, 0.25);
-            color: #FF7B7B;
+        /*alertas dinamicos com django*/
+        .alert-message {
             padding: 14px 16px;
             border-radius: 14px;
             font-size: 14px;
             margin-bottom: 20px;
+        }
+
+        .alert-message.error {
+            background: rgba(255, 59, 59, 0.08);
+            border: 1px solid rgba(255, 59, 59, 0.25);
+            color: #FF7B7B;
+        }
+
+        .alert-message.success {
+            background: rgba(0, 229, 255, 0.08);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            color: #00E5FF;
         }
     </style>
 </head>
@@ -164,9 +174,9 @@
             <p>Acesse sua conta para continuar.</p>
         </div>
 
-                        {% if messages %}
+        {% if messages %}
             {% for message in messages %}
-                <div class="error-message">
+                <div class="alert-message {{ message.tags }}">
                     {{ message }}
                 </div>
             {% endfor %}

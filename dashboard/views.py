@@ -52,7 +52,7 @@ def cadastro_view(request):
             password=senha 
         )
         user.save()
-        messages.success(request, 'Conta criada com sucesso! Faça login.')
+        messages.success(request, 'Conta criada com sucesso!')
         return redirect("login")
         
     return render(request, 'cadastro.html')
