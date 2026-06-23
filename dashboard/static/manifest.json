@@ -1,6 +1,6 @@
 {
-  "name": "SubSplit",
-  "short_name": "SubSplit",
+  "name": "SQUID",
+  "short_name": "Squid",
   "description": "Gestão de Assinaturas",
   "start_url": "/",
   "display": "standalone",
