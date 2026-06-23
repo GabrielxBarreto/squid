@@ -41,9 +41,14 @@ def cadastro_view(request):
         email = request.POST.get("email")
         senha = request.POST.get("senha")
         
-        # Validação simples
+        # Validação simples de nome
         if models.Participante.objects.filter(username=name).exists():
             messages.error(request, 'Nome de usuário já existe.')
+            
+        # Validação simples de e-mail
+        elif models.Participante.objects.filter(email=email).exists():
+            messages.error(request, 'Este e-mail já está em uso.')
+            
         else:
             user = models.Participante.objects.create_user(
                 username=name, 
@@ -130,7 +135,7 @@ def dashboard(request):
             'pendentes_count': membros_grupo.filter(status_pagamento=False).count(),
             'link_convite': request.build_absolute_uri(f"/grupo/entrar/{grupo.id}/"),
             'membros': membros_grupo,
-            'streak_pagamentos': grupo.streak_pagamentos,
+            'streak_pagamentos': group.streak_pagamentos,
 })
         
         # Buscar amigos que estão a dever neste grupo
