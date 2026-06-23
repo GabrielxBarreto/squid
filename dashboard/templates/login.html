@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - App de Assinaturas</title>
+    <title>Login - SQUID</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #050505; 
+            background-color: #000000; 
             color: #FFFFFF;
             display: flex;
             justify-content: center;
@@ -41,10 +41,13 @@
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 8px;
+            background: linear-gradient(135deg, #FFFFFF, #94A3B8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .header-section p {
-            color: #A0A0A0;
+            color: #94A3B8;
             font-size: 14px;
         }
 
@@ -66,25 +69,25 @@
         .form-group label {
             font-size: 14px;
             font-weight: 500;
-            color: #E0E0E0;
+            color: #E2E8F0;
         }
 
         .forgot-password {
             font-size: 13px;
-            color: #A855F7;
+            color: #00E5FF;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.2s;
         }
 
         .forgot-password:hover {
-            color: #8B5CF6;
+            color: #00A3B8
             text-decoration: underline;
         }
 
         .form-group input {
-            background-color: #1A1A1A; 
-            border: 1px solid transparent;
+            background-color: #0D0E11; 
+            border: 1px solid #171A21;
             border-radius: 16px; 
             padding: 16px;
             color: #FFFFFF;
@@ -94,17 +97,18 @@
         }
 
         .form-group input::placeholder {
-            color: #666666;
+            color: #475569;
         }
 
         .form-group input:focus {
-            border-color: #9B51E0; 
-            background-color: #222222;
+            border-color: #00E5FF; 
+            background-color: #171A21;
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.1);
         }
 
         .action-button {
-            background: linear-gradient(135deg, #A855F7, #8B5CF6);
-            color: #FFFFFF;
+            background: linear-gradient(135deg, #00E5FF, #00B0FF);
+            color: #000000;
             border: none;
             border-radius: 16px;
             padding: 18px;
@@ -113,22 +117,25 @@
             cursor: pointer;
             width: 100%;
             margin-top: 8px;
-            transition: opacity 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 229, 255, 0.15);
         }
 
         .action-button:hover {
-            opacity: 0.9;
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(0, 229, 255, 0.3);
         }
 
         .toggle-auth {
             text-align: center;
             font-size: 14px;
-            color: #A0A0A0;
+            color: #94A3B8;
             margin-top: 16px;
         }
 
         .toggle-auth a {
-            color: #A855F7; 
+            color: #00E5FF; 
             text-decoration: none;
             font-weight: 600;
             cursor: pointer;

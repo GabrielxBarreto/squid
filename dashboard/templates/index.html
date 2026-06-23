@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início - App de Assinaturas</title>
+    <title>Squid - Gestão de Assinaturas</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #09090b; 
+            background-color: #000000; 
             color: #FFFFFF;
             min-height: 100vh;
             display: flex;
@@ -37,7 +37,7 @@
         .logo {
             font-size: 20px;
             font-weight: 700;
-            background: linear-gradient(135deg, #A855F7, #8B5CF6);
+            background: linear-gradient(135deg, #00E5FF, #00A3B8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -49,7 +49,7 @@
         }
 
         .btn-login {
-            color: #A0A0A0;
+            color: #94A3B8;
             text-decoration: none;
             font-size: 14px;
             font-weight: 600;
@@ -57,7 +57,7 @@
         }
 
         .btn-login:hover {
-            color: #FFFFFF;
+            color: #00E5FF;
         }
 
         .btn-cta-nav {
@@ -73,8 +73,8 @@
         }
 
         .btn-cta-nav:hover {
-            background: rgba(168, 85, 247, 0.1);
-            border-color: #A855F7;
+            background: rgba(0, 229, 255, 0.1);
+            border-color: #00E5FF;
             transform: translateY(-1px);
         }
 
@@ -99,13 +99,13 @@
         }
 
         .hero-text h1 span {
-            background: linear-gradient(135deg, #A855F7, #8B5CF6);
+            background: linear-gradient(135deg, #00E5FF, #00A3B8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-text p {
-            color: #A0A0A0;
+            color: #94A3B8;
             font-size: 18px;
             line-height: 1.6;
             margin-bottom: 32px;
@@ -113,8 +113,8 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #A855F7, #7C3AED);
-            color: #FFFFFF;
+            background: linear-gradient(135deg, #00E5FF, #00B0FF);
+            color: #000000;
             text-decoration: none;
             border-radius: 16px;
             padding: 18px 36px;
@@ -122,14 +122,14 @@
             font-weight: 600;
             display: inline-block;
             transition: all 0.2s ease;
-            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
         }
 
         .btn-primary:hover {
             opacity: 1;
             filter: brightness(1.1);
             transform: translateY(-1px);
-            box-shadow: 0 12px 28px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 12px 28px rgba(0, 229, 255, 0.4);
         }
 
         /* Grid de Funcionalidades (Simulando o App) */
@@ -140,8 +140,8 @@
         }
 
         .feature-card {
-            background-color: #141417;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background-color: #0D0E11;
+            border: 1px solid solid #171A21;
             border-radius: 16px;
             padding: 24px;
             display: flex;
@@ -152,20 +152,20 @@
 
         .feature-card:hover {
             transform: translateY(-4px);
-            border-color: rgba(168, 85, 247, 0.3);
-            box-shadow: 0 10px 30px rgba(168, 85, 247, 0.04);
+            border-color: rgba(0, 229, 255, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 229, 255, 0.05);
         }
 
         .feature-card .icon {
             font-size: 24px;
-            background: rgba(168, 85, 247, 0.1);
+            background: rgba(0, 229, 255, 0.08);
             width: 48px;
             height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 12px;
-            color: #A855F7;
+            color: #00E5FF;
         }
 
         .feature-card h3 {
@@ -174,7 +174,7 @@
         }
 
         .feature-card p {
-            color: #A0A0A0;
+            color: #94A3B8;
             font-size: 14px;
             line-height: 1.5;
         }
@@ -213,7 +213,7 @@
 <body>
 
     <header>
-        <div class="logo">SubSplit.</div>
+        <div class="logo">SQUID</div>
         <div class="nav-buttons">
             <a href="{% url 'login' %}" class="btn-login">Entrar</a>
             <a href="{% url 'cadastro' %}" class="btn-cta-nav">Criar Conta</a>
@@ -258,7 +258,7 @@
     </main>
 
     <footer>
-        &copy; 2026 SubSplit. Todos os direitos reservados.
+        &copy; 2026 SQUID. Todos os direitos reservados.
     </footer>
 
 </body>

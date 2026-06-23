@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - App de Assinaturas</title>
+    <title>SQUID - Criar Conta</title>
     <style>
-        /* Importando uma fonte limpa semelhante à da imagem */
+        /* Importando uma fonte limpa*/
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-color: #000000;        
+            --card-bg: #0D0E11;          
+            --surface: #171A21;          
+            --text-main: #FFFFFF;
+            --text-muted: #94A3B8;        
+            --accent: #00E5FF;           
+            --accent-gradient: linear-gradient(135deg, #00E5FF, #00B0FF);
+        }
 
         * {
             margin: 0;
@@ -16,9 +26,8 @@
         }
 
         body {
-            /* Fundo escuro baseado na imagem */
-            background-color: #050505; 
-            color: #FFFFFF;
+            background-color: var(--bg-color); 
+            color: var(--text-main);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,7 +40,7 @@
             max-width: 400px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 28px;
         }
 
         .header-section {
@@ -40,14 +49,22 @@
         }
 
         .header-section h1 {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 700;
             margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .header-section p {
-            color: #A0A0A0; /* Cor cinza secundária semelhante à data de vencimento */
-            font-size: 14px;
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         .form-group {
@@ -59,15 +76,14 @@
         .form-group label {
             font-size: 14px;
             font-weight: 500;
-            color: #E0E0E0;
+            color: #E2E8F0;
             margin-left: 4px;
         }
 
         .form-group input {
-            /* Cor de fundo do input baseada nos cards da imagem */
-            background-color: #1A1A1A; 
-            border: 1px solid transparent;
-            border-radius: 16px; /* Bordas arredondadas iguais aos cards */
+            background-color: var(--card-bg); 
+            border: 1px solid #171A21;
+            border-radius: 16px;
             padding: 16px;
             color: #FFFFFF;
             font-size: 15px;
@@ -76,19 +92,18 @@
         }
 
         .form-group input::placeholder {
-            color: #666666;
+            color: #475569;
         }
 
         .form-group input:focus {
-            /* Borda roxa ao focar no campo, combinando com a identidade */
-            border-color: #9B51E0; 
-            background-color: #222222;
+            border-color: var(--accent); 
+            background-color: var(--surface);
+            box-shadow: 0 0 12px rgba(0, 229, 255, 0.1);
         }
 
         .action-button {
-            /* Cor roxa idêntica ao botão "+ Adicionar Assinatura" */
-            background: linear-gradient(135deg, #A855F7, #8B5CF6);
-            color: #FFFFFF;
+            background: var(--accent-gradient);
+            color: #000000; 
             border: none;
             border-radius: 16px;
             padding: 18px;
@@ -96,27 +111,30 @@
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-top: 16px;
-            transition: opacity 0.2s;
+            margin-top: 12px;
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
+            transition: all 0.2s ease;
         }
 
         .action-button:hover {
-            opacity: 0.9;
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+            box-shadow: 0 10px 28px rgba(0, 229, 255, 0.35);
         }
 
         .toggle-auth {
             text-align: center;
             font-size: 14px;
-            color: #A0A0A0;
-            margin-top: 16px;
+            color: var(--text-muted);
+            margin-top: 8px;
         }
 
         .toggle-auth a {
-            /* Tom de roxo mais claro para links */
-            color: #A855F7; 
+            color: var(--accent); 
             text-decoration: none;
             font-weight: 600;
             cursor: pointer;
+            transition: color 0.2s;
         }
 
         .toggle-auth a:hover {

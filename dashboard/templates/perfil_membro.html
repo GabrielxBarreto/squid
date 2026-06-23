@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SubSplit - Perfil de {{ membro.username }}</title>
+    <title>SQUID - Perfil de {{ membro.username }}</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         :root {
-            --bg-color: #0A0A0A;
-            --card-bg: #141414;
-            --surface: #1F1F1F;
+            --bg-color: #000000;         
+            --card-bg: #0D0E11;          
+            --surface: #171A21;          
             --text-main: #FFFFFF;
-            --text-muted: #8E8E93;
-            --accent: #A855F7;
-            --accent-dim: rgba(168, 85, 247, 0.15);
+            --text-muted: #94A3B8;        
+            --accent: #00E5FF;           
+            --accent-gradient: linear-gradient(135deg, #00E5FF, #00B0FF);
+            
             --danger: #EF4444;
-            --danger-dim: rgba(239, 68, 68, 0.1);
-            --success: #22C55E;
-            --success-dim: rgba(34, 197, 94, 0.1);
+            --danger-dim: rgba(239, 68, 68, 0.15);
+            --success: #10B981;          
+            --success-dim: rgba(16, 185, 129, 0.15);
         }
 
         * { 
@@ -37,17 +38,18 @@
             align-items: center;
             min-height: 100vh;
             padding: 24px 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Container do Perfil */
         .profile-container { 
             background-color: var(--card-bg); 
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            border: 1px solid #171A21;
             border-radius: 24px;
             padding: 32px;
             width: 100%;
-            max-width: 480px;
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            max-width: 440px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             text-align: center;
         }
 
@@ -61,15 +63,15 @@
         .avatar-placeholder {
             width: 96px;
             height: 96px;
-            background: linear-gradient(135deg, var(--accent), #7C3AED);
+            background: var(--accent-gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
             font-weight: 700;
-            color: #FFFFFF;
-            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
+            color: #000000; 
+            box-shadow: 0 8px 24px rgba(0, 229, 255, 0.2);
         }
 
         h1 {
@@ -161,7 +163,7 @@
             width: 100%;
             background-color: var(--surface);
             color: var(--text-main);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid #2d3139;
             padding: 14px;
             border-radius: 14px;
             text-decoration: none;

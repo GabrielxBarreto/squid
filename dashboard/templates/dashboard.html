@@ -5,19 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="{% static 'manifest.json' %}">
-    <title>SubSplit - Gestão de Assinaturas</title>
+    <title>SQUID - Gestão de Assinaturas</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
         :root {
             --bg-color: #000000;
-            --card-bg: #111111;
-            --surface: #1A1A1A;
+            --card-bg: #0D0E11;
+            --surface: #171A21;
             --text-main: #FFFFFF;
-            --text-muted: #888888;
-            --accent: #A855F7;
+            --text-muted: #94A3B8;
+            --accent: #00E5FF;
+            --accent-gradient: linear-gradient(135deg, #00E5FF, #00B0FF);
             --danger: #EF4444;
-            --success: #22C55E;
+            --success: #00E5FF;
+            --real-success: #22C55E;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
@@ -28,42 +30,43 @@
         
         /* Header & Pills */
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; }
-        .avatar { width: 40px; height: 40px; background-color: var(--surface); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--text-muted); }
+        .avatar { width: 40px; height: 40px; background-color: var(--surface); border: 1px solid #272A34; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--accent); cursor: pointer; }
         
         /* Dashboard Cards */
-        .total-card { background-color: var(--card-bg); border-radius: 20px; padding: 32px 20px; text-align: center; margin-bottom: 32px; }
-        .total-card h2 { font-size: 40px; margin: 8px 0; }
-        .savings { background-color: rgba(34, 197, 94, 0.1); color: var(--success); padding: 6px 12px; border-radius: 12px; font-size: 13px; display: inline-block; }
+        .total-card { background-color: var(--card-bg); border: 1px solid #171A21; border-radius: 20px; padding: 32px 20px; text-align: center; margin-bottom: 32px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);}
+        .total-card h2 { font-size: 40px; margin: 8px 0; font-weight: 700; background: linear-gradient(135deg, #FFFFFF, #94A3B8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .savings { background-color: rgba(0, 229, 255, 0.1); color: var(--accent); padding: 6px 12px; border-radius: 12px; font-size: 13px; display: inline-block; font-weight: 500; border: 1px solid rgba(0, 229, 255, 0.15);}
 
         /* Listas */
-        .section-title { font-size: 16px; margin-bottom: 16px; }
-        .item-card { background-color: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
-        .item-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .section-title { font-size: 16px; margin-bottom: 16px; color: #E2E8F0; letter-spacing: 0.5px; }
+        .item-card { background-color: var(--card-bg); border: 1px solid #171A21; border-radius: 16px; margin-bottom: 16px; transition: transform 0.2s, border-color 0.2s; }
+        .item-row { display: flex; justify-content: space-between; align-items: center; }
         .item-info { display: flex; align-items: center; gap: 16px; }
         .item-icon { width: 48px; height: 48px; background-color: var(--surface); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
 
         /* Botão de Convite Interno */
-        .btn-invite { width: 100%; background: var(--surface); color: var(--accent); border: 1px dashed rgba(168, 85, 247, 0.4); padding: 10px; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
-        .btn-invite:hover { background: rgba(168, 85, 247, 0.1); border-color: var(--accent); }
+        .btn-invite { width: 100%; background: var(--surface); color: var(--accent); border: 1px dashed rgba(0, 229, 255, 0.4); padding: 10px; border-radius: 12px; font-size: 13px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; transition: all 0.2s; }
+        .btn-invite:hover { background: rgba(0, 229, 255, 0.1); border-color: var(--accent); }
 
         /* Form Controls */
         .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .4s; border-radius: 24px; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #272A34; transition: .4s; border-radius: 24px; }
         .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--success); }
+        input:checked + .slider { background-color: var(real--success); }
         input:checked + .slider:before { transform: translateX(20px); }
 
         /* Modal */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); display: none; justify-content: center; align-items: flex-end; z-index: 1000; }
         .modal-overlay.active { display: flex; }
-        .modal-content { background-color: var(--card-bg); width: 100%; max-width: 480px; border-radius: 24px 24px 0 0; padding: 24px; }
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 14px; }
-        .form-group input, .form-group select { width: 100%; padding: 14px; border-radius: 12px; border: none; background: var(--surface); color: white; }
+        .modal-content { background-color: var(--card-bg); border-top: 1px solid #171A21; width: 100%; max-width: 480px; border-radius: 24px 24px 0 0; padding: 24px; box-shadow: 0 -10px 40px rgba(0,0,0,0.5);; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 14px; font-weight: 500; }
+        .form-group input, .form-group select { width: 100%; padding: 14px; border-radius: 12px; border: 1px solid transparent; background: var(--surface); color: white; outline: none; transition: all 0.2s; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(0, 229, 255, 0.1); }
         
         /* Botão de Ação Flutuante (Mobile) */
-        .fab-button { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: calc(100% - 48px); max-width: 432px; background: var(--accent); color: white; border: none; padding: 18px; border-radius: 16px; font-weight: 600; cursor: pointer; z-index: 10; box-shadow: 0 8px 24px rgba(168, 85, 247, 0.2); }
+        .fab-button { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); width: calc(100% - 48px); max-width: 432px; background: var(--accent-gradient); color: #000000; border: none; padding: 18px; border-radius: 16px; font-weight: 600; font-size: 15px; cursor: pointer; z-index: 10; box-shadow: 0 8px 24px rgba(0, 229, 255, 0.25); transition: all 0.2s ease; }
+        .fab-button:hover { filter: brightness(1.1); transform: translateX(-50%) translateY(-1px); box-shadow: 0 10px 28px rgba(0, 229, 255, 0.4); }
 .streak-badge {
     display: inline-flex;
     align-items: center;
@@ -188,11 +191,11 @@
 <body>
 <div id="install-banner" style="display: none; position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background-color: var(--surface, #1F1F1F); border: 1px solid var(--accent, #A855F7); border-radius: 16px; padding: 16px; z-index: 9999; box-shadow: 0 8px 32px rgba(0,0,0,0.5); text-align: center;">
     <div style="font-size: 24px; margin-bottom: 8px;">📲</div>
-    <h3 style="margin-bottom: 8px; font-size: 16px;">Instale o SubSplit</h3>
-    <p style="font-size: 13px; color: var(--text-muted, #888); margin-bottom: 16px;">Adicione à tela inicial para acessar seus grupos de forma mais rápida!</p>
+    <h3 style="margin-bottom: 8px; font-size: 16px;">Instale o SQUID</h3>
+    <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 16px;">Adicione à tela inicial para acessar seus grupos de forma mais rápida!</p>
     <div style="display: flex; gap: 10px;">
-        <button id="btn-cancel-install" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: #333; color: white; cursor: pointer;">Agora não</button>
-        <button id="btn-install" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: var(--accent, #A855F7); color: white; font-weight: bold; cursor: pointer;">Instalar</button>
+        <button id="btn-cancel-install" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: #171A21; color: white; cursor: pointer; font-weight: 500;">Agora não</button>
+        <button id="btn-install" style="flex: 1; padding: 10px; border-radius: 8px; border: none; background: var(--accent-gradient); color: #000; font-weight: bold; cursor: pointer;">Instalar</button>
     </div>
 </div>
 <div class="app-container">
@@ -203,7 +206,7 @@
                 {{ user.username|make_list|first|upper }}
             </div>
             
-            <div id="user-dropdown" style="display: none; position: absolute; top: 48px; right: 0; background-color: var(--surface); border: 1px solid #333; border-radius: 12px; padding: 8px; width: 120px; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.5);">
+            <div id="user-dropdown" style="display: none; position: absolute; top: 48px; right: 0; background-color: var(--card-bg); border: 1px solid #171A21; border-radius: 12px; padding: 8px; width: 120px; z-index: 100; box-shadow: 0 8px 24px rgba(0,0,0,0.6);">
                 <a href="{% url 'logout' %}" style="display: flex; align-items: center; gap: 8px; color: var(--danger); text-decoration: none; font-size: 14px; font-weight: 500; padding: 8px; border-radius: 8px; transition: background 0.2s;" onmouseover="this.style.background='rgba(239, 64, 64, 0.1)'" onmouseout="this.style.background='none'">
                     <span></span> Sair
                 </a>
@@ -376,11 +379,11 @@
                 <input type="text" name="descricao" placeholder="Ex: Divisão mensal" required>
             </div>
 
-            <!-- TRECHO SUBSTITUÍDO -->
+           
             <div style="display: flex; gap: 12px;">
                 <div class="form-group" style="flex: 1;">
                     <label>Streaming</label>
-                    <!-- Adicionamos o id="id_streaming" e o data-url -->
+                    
                     <select name="streaming" id="id_streaming" data-url="{% url 'ajax_carregar_planos' %}" required>
                         <option value="">Selecione...</option>
                         
@@ -391,29 +394,29 @@
                 </div>
                 <div class="form-group" style="flex: 1;">
                     <label>Plano</label>
-                    <!-- Adicionamos o id="id_plano" e removemos o loop do Django -->
+                    
                     <select name="plano" id="id_plano" required>
                         <option value="">Escolha o streaming primeiro</option>
                     </select>
                 </div>
             </div>
-            <!-- ================== -->
+            
 
             <div class="form-group">
                 <label>Dia de Vencimento (1 a 31)</label>
                 <input type="number" name="dia_vencimento" value="15" min="1" max="31" required>
             </div>
 
-            <div class="automation-row" style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; background: #1A1A1A; padding: 12px; border-radius: 12px;">
-                <span style="font-size: 14px; color: #888;">Cobrança Automática</span>
+            <div class="automation-row" style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 14px; border-radius: 12px; border: 1px solid #272A34;">
+                <span style="font-size: 14px; color: #E2E8F0; font-weight: 500;">Cobrança Automática</span>
                 <label class="switch">
                     <input type="checkbox" name="cobranca_automatica" checked>
                     <span class="slider"></span>
                 </label>
             </div>
 
-            <div class="automation-row" style="margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; background: #1A1A1A; padding: 12px; border-radius: 12px;">
-                <span style="font-size: 14px; color: #888;">Ocultar membros dos participantes</span>
+            <div class="automation-row" style="margin-bottom: 28px; display: flex; align-items: center; justify-content: space-between; background: var(--surface); padding: 14px; border-radius: 12px; border: 1px solid #272A34;">
+                <span style=="font-size: 14px; color: #E2E8F0; font-weight: 500;">Ocultar membros dos participantes</span>
                 <label class="switch">
                     <input type="checkbox" name="ocultar_membros">
                     <span class="slider"></span>
