@@ -25,7 +25,7 @@
             --success-real: #10B981;     
             --success-dim: rgba(16, 185, 129, 0.15);
         }
-        }
+        
 
         * { 
             margin: 0; 
@@ -408,16 +408,38 @@
             }
 
             .member-row{
-                flex-direction:column;
-                align-items:flex-start;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                padding: 12px; 
+                gap: 8px;
+            }
+
+            .member-info-wrapper {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .member-info p.muted {
+                display: none; 
+            }
+
+            .status-wrapper {
+                flex-shrink: 0;
             }
 
             .owner-actions{
-                width:100%;
+                width: auto;
+                flex-direction: row;
+                gap: 6px;
+                flex-shrink: 0;
             }
 
             .btn{
-                width:100%;
+                width: auto;
+                padding: 6px 10px;
+                font-size: 11px;
+                border-radius: 8px;
             }
 
             .group-header{
@@ -562,7 +584,7 @@
        {% else %}
 
         {% for membro in membros %}
-            <div class="member-row" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+            <div class="member-row" >
                 <div class="member-info-wrapper">
                     <div class="avatar">
                             {{ membro.participante.username|first|upper }}
@@ -570,13 +592,13 @@
 
                         <div class="member-info">
                             <a
-                                href="{% url 'detalhe_membro' membro.id %}"
+                                href="{% url 'detalhe_membro' membro.id %} "class="user-link"
                                 class="user-link"
                             >
                                 {{ membro.participante.username }}
                             </a>
 
-                            <p class="muted" style="font-size:13px; margin-top:2px;">
+                            <p class="muted" style="font-size:12px; margin-top:2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                                 {{ membro.participante.email }}
 
                         </div>
@@ -584,21 +606,13 @@
 
                 <div class="status-wrapper">
                   {% if usuario_eh_dono %}
-                  <a href="{% url 'alternar_pagamento' membro.id %} " style="text-decoration: none; display: flex; align-items: center; gap: 10px;">
+                  <a href="{% url 'alternar_pagamento' membro.id %} " style="text-decoration: none; display: flex; align-items: center; gap: 6px;">
                         {% if membro.status_pagamento %}
-                            <span class="badge badge-success">● Pago</span>
+                            <span class="badge badge-success" style="padding: 4px 8px; font-size: 11px;">● Pago</span>
                         {% else %}
-                        <span class="badge badge-danger">● Pendente</span>
+                        <span class="badge badge-danger" style="padding: 4px 8px; font-size: 11px;">● Pendente</span>
                         {% endif %}
-                        <input type="checkbox"
-                            {% if membro.status_pagamento %}checked{% endif %} onclick="event.preventDefault(); this.parentElement.click();">
-                  </a>
-                   {% else %}
-                        {% if membro.status_pagamento %}
-                                <span class="badge badge-success">● Pago</span>
-                        {% else %}
-                                <span class="badge badge-danger">● Pendente</span>
-                        {% endif %}
+                        
            
                    {% endif %}
             </div>
@@ -612,8 +626,8 @@
                            Cobrar
                          </a>
                        {% else %}
-                         <span class="btn btn-secondary" style="opacity: 0.65; cursor: not-allowed;">
-                           Cobrado
+                         <span class="btn btn-primary" style="opacity: 0.65; cursor: not-allowed;">
+                           Já Cobrado
                          </span>
                        {% endif %}
                     {% else %}
